@@ -1,0 +1,6 @@
+Tener un JTable 
+1.-Cambiar la propiedad "autoResizeMode" a OFF.
+2.-Click derecho en el JTable e ingresar a la opcion "Table Contents".
+3.-Ir a la pestaña "Columns"
+4.-Selecionar la columna a la que queremos fijar el ancho.
+5.-Cambiar el valor "Pref. Width" al ancho que queramos.
