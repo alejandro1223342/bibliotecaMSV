@@ -19,7 +19,7 @@ public class FormLogin extends javax.swing.JFrame {
 
     //Bien en este proyecto se va guardar el usuario y la contraseña 
     //en esta parte se esta especificando en que parte se va guardar al usuario y la contraseña
-    
+    //Hola Kevin
     
     
     public FormLogin() {
