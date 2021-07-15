@@ -73,13 +73,13 @@ public class Control_persona {
         String sql = "update persona set CEDULA=?,NOMBRES=?,APELLIDOS=?,FEHCA_NACIMIENTO=?,FECHA_RESIDENCIA_CIUDAD_RESIDENCIA where CEDULA=?";
         try {
             acceso = con.conectar();
-//            ps = acceso.prepareStatement(sql);
-//            ps.setObject(1, per.getCedula());
-//            ps.setObject(2, per.getTitulo());
-//            ps.setObject(3, per.getCantidad());
-//            ps.setObject(4, per.getEstado());
-//            ps.setObject(5, per.getIsbn());
-//            ps.setObject(6, per.getIsbn());
+            ps = acceso.prepareStatement(sql);
+            ps.setObject(1, per.getCedula());
+            ps.setObject(2, per.getTitulo());
+            ps.setObject(3, per.getCantidad());
+            ps.setObject(4, per.getEstado());
+            ps.setObject(5, per.getIsbn());
+            ps.setObject(6, per.getIsbn());
             ps.executeUpdate();
         } catch (Exception e) {
         }
