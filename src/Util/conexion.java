@@ -7,9 +7,9 @@ public class conexion {
 
     Connection con;
 
-    String url = "jdbc:mysql://localhost:3306/actividades_economicas";
-    String user = "root";//root    
-    String pass = "";//sin clave
+    String url = "jdbc:mysql://mysql-38431-0.cloudclusters.net:38431/biblioteca";
+    String user = "admin";//root    
+    String pass = "rO6DjTXY";//sin clave
 
     public Connection conectar() {
         try {
