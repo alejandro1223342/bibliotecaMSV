@@ -44,22 +44,18 @@ public class frmPrincipal_docente extends javax.swing.JFrame implements KeyListe
         side_pane = new javax.swing.JPanel();
         btn_1 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        btn_6 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
         btn_2 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         btn_4 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel14 = new javax.swing.JLabel();
-        btn_8 = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
-        btn_7 = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
         btn_3 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         btn_5 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
+        btn_8 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
         pnl_overlay = new javax.swing.JPanel();
         lbl_nav2 = new javax.swing.JLabel();
         lbl_nav = new javax.swing.JLabel();
@@ -112,36 +108,6 @@ public class frmPrincipal_docente extends javax.swing.JFrame implements KeyListe
         );
 
         side_pane.add(btn_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 120, -1));
-
-        btn_6.setBackground(new java.awt.Color(23, 35, 51));
-        btn_6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btn_6MouseReleased(evt);
-            }
-        });
-
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Subproceso6");
-
-        javax.swing.GroupLayout btn_6Layout = new javax.swing.GroupLayout(btn_6);
-        btn_6.setLayout(btn_6Layout);
-        btn_6Layout.setHorizontalGroup(
-            btn_6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btn_6Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel9)
-                .addContainerGap(29, Short.MAX_VALUE))
-        );
-        btn_6Layout.setVerticalGroup(
-            btn_6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btn_6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        side_pane.add(btn_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 120, -1));
 
         btn_2.setBackground(new java.awt.Color(23, 35, 51));
         btn_2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -211,66 +177,6 @@ public class frmPrincipal_docente extends javax.swing.JFrame implements KeyListe
         jLabel14.setText("MSV");
         side_pane.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
-        btn_8.setBackground(new java.awt.Color(23, 35, 51));
-        btn_8.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btn_8MouseReleased(evt);
-            }
-        });
-
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("Cerrar sesión");
-
-        javax.swing.GroupLayout btn_8Layout = new javax.swing.GroupLayout(btn_8);
-        btn_8.setLayout(btn_8Layout);
-        btn_8Layout.setHorizontalGroup(
-            btn_8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btn_8Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jLabel12)
-                .addContainerGap(28, Short.MAX_VALUE))
-        );
-        btn_8Layout.setVerticalGroup(
-            btn_8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btn_8Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        side_pane.add(btn_8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 120, -1));
-
-        btn_7.setBackground(new java.awt.Color(23, 35, 51));
-        btn_7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btn_7MouseReleased(evt);
-            }
-        });
-
-        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setText("Subproceso7");
-
-        javax.swing.GroupLayout btn_7Layout = new javax.swing.GroupLayout(btn_7);
-        btn_7.setLayout(btn_7Layout);
-        btn_7Layout.setHorizontalGroup(
-            btn_7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btn_7Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        btn_7Layout.setVerticalGroup(
-            btn_7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btn_7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        side_pane.add(btn_7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 120, -1));
-
         btn_3.setBackground(new java.awt.Color(23, 35, 51));
         btn_3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -312,6 +218,34 @@ public class frmPrincipal_docente extends javax.swing.JFrame implements KeyListe
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Biblioteca");
 
+        btn_8.setBackground(new java.awt.Color(23, 35, 51));
+        btn_8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btn_8MouseReleased(evt);
+            }
+        });
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("Cerrar sesión");
+
+        javax.swing.GroupLayout btn_8Layout = new javax.swing.GroupLayout(btn_8);
+        btn_8.setLayout(btn_8Layout);
+        btn_8Layout.setHorizontalGroup(
+            btn_8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btn_8Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jLabel12)
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
+        btn_8Layout.setVerticalGroup(
+            btn_8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btn_8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout btn_5Layout = new javax.swing.GroupLayout(btn_5);
         btn_5.setLayout(btn_5Layout);
         btn_5Layout.setHorizontalGroup(
@@ -319,13 +253,18 @@ public class frmPrincipal_docente extends javax.swing.JFrame implements KeyListe
             .addGroup(btn_5Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jLabel16)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btn_5Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btn_8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         btn_5Layout.setVerticalGroup(
             btn_5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btn_5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -469,24 +408,6 @@ public class frmPrincipal_docente extends javax.swing.JFrame implements KeyListe
         // new CambiaPanel(pnl_host, new vista.frmSalidas());
     }//GEN-LAST:event_btn_5MousePressed
 
-    private void btn_6MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_6MouseReleased
-
-        setColor(btn_6);
-        resetColor(new JPanel[]{btn_1, btn_2, btn_3, btn_4, btn_5, btn_7, btn_8});
-        lbl_nav.setText("Inicio/subproceso6");
-        lbl_nav2.setText("Subproceso6");
-        //new CambiaPanel(pnl_host, new vista.frmReportes());
-    }//GEN-LAST:event_btn_6MouseReleased
-
-    private void btn_7MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_7MouseReleased
-        setColor(btn_7);
-        resetColor(new JPanel[]{btn_1, btn_2, btn_3, btn_4, btn_5, btn_6, btn_8});
-        lbl_nav.setText("Inicio/subproceso7");
-        lbl_nav2.setText("Subproceso7");
-
-        //new CambiaPanel(pnl_host, new vista.frmCierreCaja());
-    }//GEN-LAST:event_btn_7MouseReleased
-
     public static void setColor(JPanel pane) {
         pane.setBackground(new Color(41, 57, 80));
     }
@@ -516,18 +437,14 @@ public class frmPrincipal_docente extends javax.swing.JFrame implements KeyListe
     public static javax.swing.JPanel btn_3;
     public static javax.swing.JPanel btn_4;
     public static javax.swing.JPanel btn_5;
-    public static javax.swing.JPanel btn_6;
-    public static javax.swing.JPanel btn_7;
     public static javax.swing.JPanel btn_8;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     public static javax.swing.JPanel jPanel4;
     private javax.swing.JSeparator jSeparator1;
     public static javax.swing.JLabel lbl_nav;
