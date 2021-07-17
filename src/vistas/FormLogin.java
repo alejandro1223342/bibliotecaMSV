@@ -14,18 +14,19 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 import modelo.controllers.LoginController;
 import modelo.controllers.RegistroController;
+import vistas.Estudiante.frmPrincipal_estudiante;
 import vistas.administrador.frmPrincipal_administrador;
 import vistas.docente.frmPrincipal_docente;
 
-
-
 public class FormLogin extends javax.swing.JFrame {
+
     LoginController LoginController;
+
     public FormLogin() {
         initComponents();
         this.setLocationRelativeTo(null);
-       
-        LoginController = new LoginController();   
+
+        LoginController = new LoginController();
     }
 
     /**
@@ -39,7 +40,7 @@ public class FormLogin extends javax.swing.JFrame {
 
         jComboBox1 = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
-        btnRegistrarse = new fivecodbutton.FiveCodButton();
+        btnIngresarB = new fivecodbutton.FiveCodButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnSalir1 = new fivecodbutton.FiveCodButton();
@@ -70,11 +71,11 @@ public class FormLogin extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 0, new java.awt.Color(255, 0, 0)));
 
-        btnRegistrarse.setBackground(new java.awt.Color(23, 35, 51));
-        btnRegistrarse.setText("Ingresar a Biblioteca");
-        btnRegistrarse.addActionListener(new java.awt.event.ActionListener() {
+        btnIngresarB.setBackground(new java.awt.Color(23, 35, 51));
+        btnIngresarB.setText("Ingresar a Biblioteca");
+        btnIngresarB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarseActionPerformed(evt);
+                btnIngresarBActionPerformed(evt);
             }
         });
 
@@ -176,7 +177,7 @@ public class FormLogin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(btnRegistrarse1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnRegistrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnIngresarB, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -198,7 +199,7 @@ public class FormLogin extends javax.swing.JFrame {
                 .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegistrarse1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRegistrarse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnIngresarB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -228,31 +229,28 @@ public class FormLogin extends javax.swing.JFrame {
         FiveCodMover.FiveCodMoverJFrame.MouseDraggedFrame(evt, this);
     }//GEN-LAST:event_formMouseDragged
 
-    private void btnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarseActionPerformed
-//En esta parte se esta diciendo que si el checkbox esta presionado se guarde al usuario y a la contraseña 
-
-//Ahora vamos hacer la prueba 
-        
-
-    }//GEN-LAST:event_btnRegistrarseActionPerformed
+    private void btnIngresarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarBActionPerformed
+        frmPrincipal_estudiante frmpe = new frmPrincipal_estudiante();
+        frmpe.setVisible(true);
+    }//GEN-LAST:event_btnIngresarBActionPerformed
 
     private void btnRegistrarse1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarse1ActionPerformed
         // TODO add your handling code here:
         String cedula = txtCedula.getText();
-        String cbo = (String)cboUsuario.getSelectedItem();
-        String claveD= txtClaveDoc.getText();
-        
+        String cbo = (String) cboUsuario.getSelectedItem();
+        String claveD = txtClaveDoc.getText();
+
         LoginController.actionLogin(cbo, cedula, claveD);
         if (cbo.equals("Administrador")) {
-            if ( LoginController.actionLogin(cbo, cedula, claveD)) {
-                frmPrincipal_administrador frmAdmin= new frmPrincipal_administrador();
+            if (LoginController.actionLogin(cbo, cedula, claveD)) {
+                frmPrincipal_administrador frmAdmin = new frmPrincipal_administrador();
                 frmAdmin.setVisible(true);
                 dispose();
             }
- 
-        }else if (cbo.equals("Docente")){
-            if (LoginController.actionLogin(cbo, cedula, claveD)){
-                frmPrincipal_docente frmDocen= new frmPrincipal_docente();
+
+        } else if (cbo.equals("Docente")) {
+            if (LoginController.actionLogin(cbo, cedula, claveD)) {
+                frmPrincipal_docente frmDocen = new frmPrincipal_docente();
                 frmDocen.setVisible(true);
                 dispose();
             }
@@ -310,7 +308,7 @@ public class FormLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private fivecodbutton.FiveCodButton btnRegistrarse;
+    private fivecodbutton.FiveCodButton btnIngresarB;
     private fivecodbutton.FiveCodButton btnRegistrarse1;
     private fivecodbutton.FiveCodButton btnSalir1;
     private javax.swing.JComboBox<String> cboUsuario;
