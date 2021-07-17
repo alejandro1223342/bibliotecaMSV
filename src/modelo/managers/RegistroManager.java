@@ -10,31 +10,65 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-
+import javax.swing.JOptionPane;
+import modelos.entidades.PersonaModel;
 
 public class RegistroManager {
-    
+
     PreparedStatement ps;
     ResultSet rs;
     conexion con = new conexion();
     Connection acceso;
 
-//    public void registrarNuevoDoscente(Modelo_Usuario user) {
-//
-//        try {
-//            String sql = "insert into `actividades_economicas`.`usuario` (`ID_PER`, `ID_ROL`, `CONTRASENA`,`ESTADO`,`FECHA_CREACION`) VALUES ('?','?','?','?','?');";
-//            acceso = con.conectar();
-//            ps = acceso.prepareStatement(sql);
-//            ps.setObject(1, user.getId_per());
-//            ps.setObject(2, user.getId_rol());
-//            ps.setObject(3, user.getContraseña());
-//            ps.setObject(4, 1);
-//            ps.setObject(5, user.getFecha_creacion());
-//            ps.executeUpdate();
-//
-//        } catch (Exception e) {
-//        }
-//    }
+    public void registrarNuevoDocente(PersonaModel user, String clave) {
+        registrarPersona(user);
+        
+        try {  
+            String sql = "insert into USUARIOS VALUES (?,?)";
+            acceso = con.conectar();
+            ps = acceso.prepareStatement(sql);
+            ps.setObject(1, user.getCedula());
+            ps.setObject(2, 1);
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Docente registrado");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Función registrarNuevoDocente: " +e.getMessage());
+        }
+
+    }
+
+    public void registrarPersona(PersonaModel user) {
+
+        try {
+            String sql = "insert into PERSONA VALUES (?,?,?,?)";
+            acceso = con.conectar();
+            ps = acceso.prepareStatement(sql);
+            ps.setObject(1, user.getCedula());
+            ps.setObject(2, user.getNombres());
+            ps.setObject(3, user.getApellidos());
+            ps.setObject(4, user.isEstado());
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Función registrarPersona: "+e.getMessage());
+        }
+    }
+
+    public boolean comprobarClave(String clave) throws Exception {
+
+        String sql = "select * from CLAVES where clave=?";
+
+        acceso = con.conectar();
+        ps = acceso.prepareStatement(sql);
+        ps.setString(1, clave);
+        rs = ps.executeQuery();
+        if (rs.next()) {
+            return true;
+        } else {
+            throw new Exception("Clave incorrecta, alejate");
+        }
+    }
 
 //    public ArrayList<Modelo_Usuario> consulta() {
 //
@@ -102,5 +136,4 @@ public class RegistroManager {
 //        } catch (Exception e) {
 //        }
 //    }
-
 }
