@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="Proyecto_BibliotecaMSVPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>modelos.entidades.MateriasLibro</class>
+    <class>modelos.entidades.CategoriasLibro</class>
+    <class>modelos.entidades.Claves</class>
+    <class>modelos.entidades.LibroDatos</class>
+    <class>modelos.entidades.Usuarios</class>
+    <class>modelos.entidades.Rol</class>
+    <class>modelos.entidades.Persona</class>
+    <class>modelos.entidades.Libro</class>
+    <class>modelos.entidades.Historial</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://mysql-38431-0.cloudclusters.net:38431/biblioteca?zeroDateTimeBehavior=convertToNull"/>
+      <property name="javax.persistence.jdbc.user" value="admin"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="rO6DjTXY"/>
+    </properties>
+  </persistence-unit>
+</persistence>
