@@ -242,8 +242,6 @@ public class FormRegistro extends javax.swing.JFrame {
      
      registroController.actionRegistroDocente(persona, clave);
      registroController.actionEncerarInputs();
-       
-
     }//GEN-LAST:event_btnRegistrarseActionPerformed
 
     private void txtApellidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidosActionPerformed

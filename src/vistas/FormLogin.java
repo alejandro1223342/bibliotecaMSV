@@ -12,24 +12,21 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
+import modelo.controllers.LoginController;
+import modelo.controllers.RegistroController;
+import vistas.administrador.frmPrincipal_administrador;
+import vistas.docente.frmPrincipal_docente;
 
 
 
 public class FormLogin extends javax.swing.JFrame {
-
-    //Bien en este proyecto se va guardar el usuario y la contraseña 
-    //en esta parte se esta especificando en que parte se va guardar al usuario y la contraseña
-    //Hola Kevin
-    
-    
+    LoginController LoginController;
     public FormLogin() {
         initComponents();
         this.setLocationRelativeTo(null);
        
+        LoginController = new LoginController();   
     }
-
-   
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -241,6 +238,25 @@ public class FormLogin extends javax.swing.JFrame {
 
     private void btnRegistrarse1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarse1ActionPerformed
         // TODO add your handling code here:
+        String cedula = txtCedula.getText();
+        String cbo = (String)cboUsuario.getSelectedItem();
+        String claveD= txtClaveDoc.getText();
+        
+        LoginController.actionLogin(cbo, cedula, claveD);
+        if (cbo.equals("Administrador")) {
+            if ( LoginController.actionLogin(cbo, cedula, claveD)) {
+                frmPrincipal_administrador frmAdmin= new frmPrincipal_administrador();
+                frmAdmin.setVisible(true);
+                dispose();
+            }
+ 
+        }else if (cbo.equals("Docente")){
+            if (LoginController.actionLogin(cbo, cedula, claveD)){
+                frmPrincipal_docente frmDocen= new frmPrincipal_docente();
+                frmDocen.setVisible(true);
+                dispose();
+            }
+        }
     }//GEN-LAST:event_btnRegistrarse1ActionPerformed
 
     /**
