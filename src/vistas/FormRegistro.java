@@ -72,9 +72,9 @@ public class FormRegistro extends javax.swing.JFrame {
         });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 0, new java.awt.Color(247, 202, 84)));
+        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 0, new java.awt.Color(255, 0, 0)));
 
-        btnRegistrarse.setBackground(new java.awt.Color(247, 190, 15));
+        btnRegistrarse.setBackground(new java.awt.Color(23, 35, 51));
         btnRegistrarse.setText("Registrarse");
         btnRegistrarse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,14 +82,14 @@ public class FormRegistro extends javax.swing.JFrame {
             }
         });
 
-        jPanel2.setBackground(new java.awt.Color(23, 35, 51));
+        jPanel2.setBackground(new java.awt.Color(255, 0, 0));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 27)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Registro");
 
         btnSalir1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FiveCodImagen/ic_clear_black_18dp.png"))); // NOI18N
-        btnSalir1.setBackground(new java.awt.Color(23, 35, 51));
+        btnSalir1.setBackground(new java.awt.Color(255, 0, 0));
         btnSalir1.setColorHover(new java.awt.Color(232, 17, 35));
         btnSalir1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

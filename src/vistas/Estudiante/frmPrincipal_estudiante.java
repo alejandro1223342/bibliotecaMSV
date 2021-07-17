@@ -68,7 +68,7 @@ public class frmPrincipal_estudiante extends javax.swing.JFrame implements KeyLi
         });
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        side_pane.setBackground(new java.awt.Color(0, 0, 0));
+        side_pane.setBackground(new java.awt.Color(23, 35, 51));
         side_pane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnBiblioteca.setBackground(new java.awt.Color(23, 35, 51));

@@ -261,11 +261,11 @@ public class frmPrincipal_docente extends javax.swing.JFrame implements KeyListe
             btnCerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnCerrarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
+                .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        side_pane.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 120, -1));
+        side_pane.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 303, 120, 40));
 
         jPanel4.add(side_pane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 620));
 
@@ -335,7 +335,7 @@ public class frmPrincipal_docente extends javax.swing.JFrame implements KeyListe
     private void btnSubirlibroMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubirlibroMousePressed
 
         setColor(btnSubirlibro);
-        resetColor(new JPanel[]{btnCerrar});
+        resetColor(new JPanel[]{btnCerrar, btnBiblioteca,btnCrearCat,btnCrearMater,btnLibroS,});
         lbl_nav.setText("Inicio");
         lbl_nav2.setText("Subir Libro"
                 + "");

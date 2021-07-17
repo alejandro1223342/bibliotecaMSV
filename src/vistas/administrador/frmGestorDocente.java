@@ -1,4 +1,4 @@
-package vistas;
+package vistas.administrador;
 
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;

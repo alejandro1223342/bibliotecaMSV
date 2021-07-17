@@ -70,7 +70,7 @@ public class frmPrincipal_administrador extends javax.swing.JFrame implements Ke
         });
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        side_pane.setBackground(new java.awt.Color(0, 0, 0));
+        side_pane.setBackground(new java.awt.Color(23, 35, 51));
         side_pane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnClaves.setBackground(new java.awt.Color(23, 35, 51));
@@ -239,7 +239,7 @@ public class frmPrincipal_administrador extends javax.swing.JFrame implements Ke
     private void btnClavesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClavesMousePressed
 
         setColor(btnClaves);
-        resetColor(new JPanel[]{btnCerrar});
+        resetColor(new JPanel[]{btnCerrar,btnGestor});
         lbl_nav.setText("Inicio");
         lbl_nav2.setText("Administrar Clave");
         new CambiaPanel(pnl_host, new vistas.administrador.frmAdministar_Claves());
@@ -264,7 +264,7 @@ public class frmPrincipal_administrador extends javax.swing.JFrame implements Ke
 
     private void btnCerrarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarMouseReleased
         setColor(btnCerrar);
-        resetColor(new JPanel[]{btnClaves});
+        resetColor(new JPanel[]{btnClaves,btnGestor});
         vistas.FormLogin login = new vistas.FormLogin();
         login.setVisible(true);
         dispose();
@@ -276,7 +276,7 @@ public class frmPrincipal_administrador extends javax.swing.JFrame implements Ke
         resetColor(new JPanel[]{btnClaves,btnCerrar});
         lbl_nav2.setText("Gestor Docente");
 
-        new CambiaPanel(pnl_host, new vistas.frmGestorDocente());
+        new CambiaPanel(pnl_host, new vistas.administrador.frmGestorDocente());
     }//GEN-LAST:event_btnGestorMousePressed
 
     public static void setColor(JPanel pane) {
@@ -288,7 +288,6 @@ public class frmPrincipal_administrador extends javax.swing.JFrame implements Ke
             pane[i].setBackground(new Color(23, 35, 51));
 
         }
-
     }
 
     public static void main(String args[]) {
