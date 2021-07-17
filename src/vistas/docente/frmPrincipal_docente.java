@@ -22,14 +22,14 @@ public class frmPrincipal_docente extends javax.swing.JFrame implements KeyListe
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
-        setColor(btn_1);
-        resetColor(new JPanel[]{btn_8});
+        setColor(btnSubirlibro);
+        resetColor(new JPanel[]{btnCerrar});
 
         //ArrayList{
-        new CambiaPanel(pnl_host, new vistas.frmUsuarios());
-        lbl_nav.setText("Inicio");
+        new CambiaPanel(pnl_host, new vistas.docente.frmUsuarios_SubirLibros());
+        lbl_nav.setText("Bienvenido");
 
-        lbl_nav2.setText("Organizador");
+        lbl_nav2.setText("Docente");
 
         // keylistener
         addKeyListener(this);
@@ -42,19 +42,19 @@ public class frmPrincipal_docente extends javax.swing.JFrame implements KeyListe
 
         jPanel4 = new javax.swing.JPanel();
         side_pane = new javax.swing.JPanel();
-        btn_1 = new javax.swing.JPanel();
+        btnSubirlibro = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        btn_2 = new javax.swing.JPanel();
+        btnLibroS = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        btn_4 = new javax.swing.JPanel();
+        btnCrearMater = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel14 = new javax.swing.JLabel();
-        btn_3 = new javax.swing.JPanel();
+        btnCrearCat = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
-        btn_5 = new javax.swing.JPanel();
+        btnBiblioteca = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
-        btn_8 = new javax.swing.JPanel();
+        btnCerrar = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         pnl_overlay = new javax.swing.JPanel();
         lbl_nav2 = new javax.swing.JLabel();
@@ -79,10 +79,10 @@ public class frmPrincipal_docente extends javax.swing.JFrame implements KeyListe
         side_pane.setBackground(new java.awt.Color(23, 35, 51));
         side_pane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn_1.setBackground(new java.awt.Color(23, 35, 51));
-        btn_1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnSubirlibro.setBackground(new java.awt.Color(23, 35, 51));
+        btnSubirlibro.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                btn_1MousePressed(evt);
+                btnSubirlibroMousePressed(evt);
             }
         });
 
@@ -90,29 +90,29 @@ public class frmPrincipal_docente extends javax.swing.JFrame implements KeyListe
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Subir Libro");
 
-        javax.swing.GroupLayout btn_1Layout = new javax.swing.GroupLayout(btn_1);
-        btn_1.setLayout(btn_1Layout);
-        btn_1Layout.setHorizontalGroup(
-            btn_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btn_1Layout.createSequentialGroup()
+        javax.swing.GroupLayout btnSubirlibroLayout = new javax.swing.GroupLayout(btnSubirlibro);
+        btnSubirlibro.setLayout(btnSubirlibroLayout);
+        btnSubirlibroLayout.setHorizontalGroup(
+            btnSubirlibroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnSubirlibroLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jLabel8)
                 .addContainerGap(39, Short.MAX_VALUE))
         );
-        btn_1Layout.setVerticalGroup(
-            btn_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btn_1Layout.createSequentialGroup()
+        btnSubirlibroLayout.setVerticalGroup(
+            btnSubirlibroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnSubirlibroLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        side_pane.add(btn_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 120, -1));
+        side_pane.add(btnSubirlibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 120, -1));
 
-        btn_2.setBackground(new java.awt.Color(23, 35, 51));
-        btn_2.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnLibroS.setBackground(new java.awt.Color(23, 35, 51));
+        btnLibroS.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                btn_2MousePressed(evt);
+                btnLibroSMousePressed(evt);
             }
         });
 
@@ -120,29 +120,29 @@ public class frmPrincipal_docente extends javax.swing.JFrame implements KeyListe
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Libros Subidos");
 
-        javax.swing.GroupLayout btn_2Layout = new javax.swing.GroupLayout(btn_2);
-        btn_2.setLayout(btn_2Layout);
-        btn_2Layout.setHorizontalGroup(
-            btn_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btn_2Layout.createSequentialGroup()
+        javax.swing.GroupLayout btnLibroSLayout = new javax.swing.GroupLayout(btnLibroS);
+        btnLibroS.setLayout(btnLibroSLayout);
+        btnLibroSLayout.setHorizontalGroup(
+            btnLibroSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnLibroSLayout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(jLabel10)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        btn_2Layout.setVerticalGroup(
-            btn_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btn_2Layout.createSequentialGroup()
+        btnLibroSLayout.setVerticalGroup(
+            btnLibroSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnLibroSLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        side_pane.add(btn_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 120, -1));
+        side_pane.add(btnLibroS, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 120, -1));
 
-        btn_4.setBackground(new java.awt.Color(23, 35, 51));
-        btn_4.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnCrearMater.setBackground(new java.awt.Color(23, 35, 51));
+        btnCrearMater.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                btn_4MousePressed(evt);
+                btnCrearMaterMousePressed(evt);
             }
         });
 
@@ -150,24 +150,24 @@ public class frmPrincipal_docente extends javax.swing.JFrame implements KeyListe
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Crear Materia");
 
-        javax.swing.GroupLayout btn_4Layout = new javax.swing.GroupLayout(btn_4);
-        btn_4.setLayout(btn_4Layout);
-        btn_4Layout.setHorizontalGroup(
-            btn_4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btn_4Layout.createSequentialGroup()
+        javax.swing.GroupLayout btnCrearMaterLayout = new javax.swing.GroupLayout(btnCrearMater);
+        btnCrearMater.setLayout(btnCrearMaterLayout);
+        btnCrearMaterLayout.setHorizontalGroup(
+            btnCrearMaterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnCrearMaterLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jLabel11)
                 .addContainerGap(25, Short.MAX_VALUE))
         );
-        btn_4Layout.setVerticalGroup(
-            btn_4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btn_4Layout.createSequentialGroup()
+        btnCrearMaterLayout.setVerticalGroup(
+            btnCrearMaterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnCrearMaterLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(60, 60, 60))
         );
 
-        side_pane.add(btn_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 120, 40));
+        side_pane.add(btnCrearMater, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 120, 40));
 
         jSeparator1.setPreferredSize(new java.awt.Dimension(50, 2));
         side_pane.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 100, -1));
@@ -177,10 +177,10 @@ public class frmPrincipal_docente extends javax.swing.JFrame implements KeyListe
         jLabel14.setText("MSV");
         side_pane.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
-        btn_3.setBackground(new java.awt.Color(23, 35, 51));
-        btn_3.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnCrearCat.setBackground(new java.awt.Color(23, 35, 51));
+        btnCrearCat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                btn_3MousePressed(evt);
+                btnCrearCatMousePressed(evt);
             }
         });
 
@@ -188,29 +188,29 @@ public class frmPrincipal_docente extends javax.swing.JFrame implements KeyListe
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("Crear Categoría");
 
-        javax.swing.GroupLayout btn_3Layout = new javax.swing.GroupLayout(btn_3);
-        btn_3.setLayout(btn_3Layout);
-        btn_3Layout.setHorizontalGroup(
-            btn_3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btn_3Layout.createSequentialGroup()
+        javax.swing.GroupLayout btnCrearCatLayout = new javax.swing.GroupLayout(btnCrearCat);
+        btnCrearCat.setLayout(btnCrearCatLayout);
+        btnCrearCatLayout.setHorizontalGroup(
+            btnCrearCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnCrearCatLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jLabel15)
                 .addContainerGap(14, Short.MAX_VALUE))
         );
-        btn_3Layout.setVerticalGroup(
-            btn_3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btn_3Layout.createSequentialGroup()
+        btnCrearCatLayout.setVerticalGroup(
+            btnCrearCatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnCrearCatLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        side_pane.add(btn_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 120, -1));
+        side_pane.add(btnCrearCat, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 120, -1));
 
-        btn_5.setBackground(new java.awt.Color(23, 35, 51));
-        btn_5.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnBiblioteca.setBackground(new java.awt.Color(23, 35, 51));
+        btnBiblioteca.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                btn_5MousePressed(evt);
+                btnBibliotecaMousePressed(evt);
             }
         });
 
@@ -218,10 +218,29 @@ public class frmPrincipal_docente extends javax.swing.JFrame implements KeyListe
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Biblioteca");
 
-        btn_8.setBackground(new java.awt.Color(23, 35, 51));
-        btn_8.addMouseListener(new java.awt.event.MouseAdapter() {
+        javax.swing.GroupLayout btnBibliotecaLayout = new javax.swing.GroupLayout(btnBiblioteca);
+        btnBiblioteca.setLayout(btnBibliotecaLayout);
+        btnBibliotecaLayout.setHorizontalGroup(
+            btnBibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnBibliotecaLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jLabel16)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        btnBibliotecaLayout.setVerticalGroup(
+            btnBibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnBibliotecaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(60, 60, 60))
+        );
+
+        side_pane.add(btnBiblioteca, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 120, 50));
+
+        btnCerrar.setBackground(new java.awt.Color(23, 35, 51));
+        btnCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btn_8MouseReleased(evt);
+                btnCerrarMouseReleased(evt);
             }
         });
 
@@ -229,46 +248,24 @@ public class frmPrincipal_docente extends javax.swing.JFrame implements KeyListe
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Cerrar sesión");
 
-        javax.swing.GroupLayout btn_8Layout = new javax.swing.GroupLayout(btn_8);
-        btn_8.setLayout(btn_8Layout);
-        btn_8Layout.setHorizontalGroup(
-            btn_8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btn_8Layout.createSequentialGroup()
+        javax.swing.GroupLayout btnCerrarLayout = new javax.swing.GroupLayout(btnCerrar);
+        btnCerrar.setLayout(btnCerrarLayout);
+        btnCerrarLayout.setHorizontalGroup(
+            btnCerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnCerrarLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jLabel12)
                 .addContainerGap(28, Short.MAX_VALUE))
         );
-        btn_8Layout.setVerticalGroup(
-            btn_8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btn_8Layout.createSequentialGroup()
+        btnCerrarLayout.setVerticalGroup(
+            btnCerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnCerrarLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout btn_5Layout = new javax.swing.GroupLayout(btn_5);
-        btn_5.setLayout(btn_5Layout);
-        btn_5Layout.setHorizontalGroup(
-            btn_5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btn_5Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jLabel16)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btn_5Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btn_8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        btn_5Layout.setVerticalGroup(
-            btn_5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btn_5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        side_pane.add(btn_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 120, -1));
+        side_pane.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 120, -1));
 
         jPanel4.add(side_pane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 620));
 
@@ -335,23 +332,23 @@ public class frmPrincipal_docente extends javax.swing.JFrame implements KeyListe
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_1MousePressed
+    private void btnSubirlibroMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubirlibroMousePressed
 
-        setColor(btn_1);
-        resetColor(new JPanel[]{btn_8});
+        setColor(btnSubirlibro);
+        resetColor(new JPanel[]{btnCerrar});
         lbl_nav.setText("Inicio");
         lbl_nav2.setText("Subir Libro"
                 + "");
-        new CambiaPanel(pnl_host, new vistas.docente.frmUsuarios_organizador());
-    }//GEN-LAST:event_btn_1MousePressed
+        new CambiaPanel(pnl_host, new vistas.docente.frmUsuarios_SubirLibros());
+    }//GEN-LAST:event_btnSubirlibroMousePressed
 
-    private void btn_8MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_8MouseReleased
-        setColor(btn_8);
-        resetColor(new JPanel[]{btn_1});
-        FormRegistro login = new FormRegistro();
+    private void btnCerrarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarMouseReleased
+        setColor(btnCerrar);
+        resetColor(new JPanel[]{btnSubirlibro});
+        vistas.FormLogin login = new vistas.FormLogin();
         login.setVisible(true);
         dispose();
-    }//GEN-LAST:event_btn_8MouseReleased
+    }//GEN-LAST:event_btnCerrarMouseReleased
 
     private void lblminimizarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblminimizarMousePressed
 
@@ -370,43 +367,43 @@ public class frmPrincipal_docente extends javax.swing.JFrame implements KeyListe
 
     }//GEN-LAST:event_jPanel4KeyPressed
 
-    private void btn_2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_2MousePressed
+    private void btnLibroSMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLibroSMousePressed
 
-        setColor(btn_2);
-        resetColor(new JPanel[]{btn_1, btn_3, btn_4, btn_5, btn_6, btn_7, btn_8});
-        lbl_nav.setText("Inicio/subproceso2");
-        lbl_nav2.setText("Subproceso2");
+        setColor(btnLibroS);
+        resetColor(new JPanel[]{btnSubirlibro, btnCrearCat, btnCrearMater, btnBiblioteca,btnCerrar});
+        lbl_nav.setText("Bienvenido");
+        lbl_nav2.setText("Libros Subidos");
 
-        new CambiaPanel(pnl_host, new vistas.frmGestorDocente());
-    }//GEN-LAST:event_btn_2MousePressed
+        new CambiaPanel(pnl_host, new vistas.docente.frmLibrosSubidos());
+    }//GEN-LAST:event_btnLibroSMousePressed
 
-    private void btn_3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_3MousePressed
-        setColor(btn_3);
-        resetColor(new JPanel[]{btn_1, btn_2, btn_4, btn_5, btn_6, btn_7, btn_8});
-        lbl_nav.setText("Inicio/subproceso3");
-        lbl_nav2.setText("Subproceso3");
+    private void btnCrearCatMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrearCatMousePressed
+        setColor(btnCrearCat);
+        resetColor(new JPanel[]{btnSubirlibro, btnLibroS, btnCrearMater, btnBiblioteca,btnCerrar});
+        lbl_nav.setText("Inicio");
+        lbl_nav2.setText("Crear Categoría");
 
-        //new CambiaPanel(pnl_host, new vista.frmInventario());
-    }//GEN-LAST:event_btn_3MousePressed
+        new CambiaPanel(pnl_host, new vistas.docente.frmCrear_Categoria());
+    }//GEN-LAST:event_btnCrearCatMousePressed
 
-    private void btn_4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_4MousePressed
+    private void btnCrearMaterMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrearMaterMousePressed
 
-        setColor(btn_4);
-        resetColor(new JPanel[]{btn_1, btn_2, btn_3, btn_5, btn_6, btn_7, btn_8});
-        lbl_nav.setText("Inicio/subproceso4");
-        lbl_nav2.setText("Subproceso4");
+        setColor(btnCrearMater);
+        resetColor(new JPanel[]{btnSubirlibro, btnLibroS, btnCrearCat, btnBiblioteca,btnCerrar});
+        lbl_nav.setText("Inicio");
+        lbl_nav2.setText("Crear Categoría");
 
-        //new CambiaPanel(pnl_host, new vista.frmEntradas());
-    }//GEN-LAST:event_btn_4MousePressed
+        new CambiaPanel(pnl_host, new vistas.docente.frmCrear_Materia());
+    }//GEN-LAST:event_btnCrearMaterMousePressed
 
-    private void btn_5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_5MousePressed
-        setColor(btn_5);
-        resetColor(new JPanel[]{btn_1, btn_2, btn_3, btn_4, btn_6, btn_7, btn_8});
-        lbl_nav.setText("Inicio/subproceso5");
-        lbl_nav2.setText("Subproceso5");
+    private void btnBibliotecaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBibliotecaMousePressed
+        setColor(btnBiblioteca);
+        resetColor(new JPanel[]{btnSubirlibro, btnLibroS, btnCrearCat, btnCrearMater,btnCerrar});
+        lbl_nav.setText("Inicio");
+        lbl_nav2.setText("Biblioteca");
 
-        // new CambiaPanel(pnl_host, new vista.frmSalidas());
-    }//GEN-LAST:event_btn_5MousePressed
+         new CambiaPanel(pnl_host, new vistas.docente.frmBiblioteca());
+    }//GEN-LAST:event_btnBibliotecaMousePressed
 
     public static void setColor(JPanel pane) {
         pane.setBackground(new Color(41, 57, 80));
@@ -432,12 +429,12 @@ public class frmPrincipal_docente extends javax.swing.JFrame implements KeyListe
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JPanel btn_1;
-    public static javax.swing.JPanel btn_2;
-    public static javax.swing.JPanel btn_3;
-    public static javax.swing.JPanel btn_4;
-    public static javax.swing.JPanel btn_5;
-    public static javax.swing.JPanel btn_8;
+    public static javax.swing.JPanel btnBiblioteca;
+    public static javax.swing.JPanel btnCerrar;
+    public static javax.swing.JPanel btnCrearCat;
+    public static javax.swing.JPanel btnCrearMater;
+    public static javax.swing.JPanel btnLibroS;
+    public static javax.swing.JPanel btnSubirlibro;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

@@ -22,11 +22,11 @@ public class frmPrincipal_administrador extends javax.swing.JFrame implements Ke
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
-        setColor(btn_1);
-        resetColor(new JPanel[]{btn_8});
+        setColor(btnClaves);
+        resetColor(new JPanel[]{btnCerrar});
 
         //ArrayList{
-        new CambiaPanel(pnl_host, new vistas.frmUsuarios());
+        new CambiaPanel(pnl_host, new vistas.administrador.frmAdministar_Claves());
         lbl_nav.setText("Inicio");
 
         lbl_nav2.setText("Aministrador");
@@ -42,13 +42,13 @@ public class frmPrincipal_administrador extends javax.swing.JFrame implements Ke
 
         jPanel4 = new javax.swing.JPanel();
         side_pane = new javax.swing.JPanel();
-        btn_1 = new javax.swing.JPanel();
+        btnClaves = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        btn_2 = new javax.swing.JPanel();
+        btnGestor = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel14 = new javax.swing.JLabel();
-        btn_8 = new javax.swing.JPanel();
+        btnCerrar = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         pnl_overlay = new javax.swing.JPanel();
         lbl_nav2 = new javax.swing.JLabel();
@@ -73,10 +73,10 @@ public class frmPrincipal_administrador extends javax.swing.JFrame implements Ke
         side_pane.setBackground(new java.awt.Color(0, 0, 0));
         side_pane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn_1.setBackground(new java.awt.Color(23, 35, 51));
-        btn_1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnClaves.setBackground(new java.awt.Color(23, 35, 51));
+        btnClaves.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                btn_1MousePressed(evt);
+                btnClavesMousePressed(evt);
             }
         });
 
@@ -85,28 +85,28 @@ public class frmPrincipal_administrador extends javax.swing.JFrame implements Ke
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Administrar Claves");
 
-        javax.swing.GroupLayout btn_1Layout = new javax.swing.GroupLayout(btn_1);
-        btn_1.setLayout(btn_1Layout);
-        btn_1Layout.setHorizontalGroup(
-            btn_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btn_1Layout.createSequentialGroup()
+        javax.swing.GroupLayout btnClavesLayout = new javax.swing.GroupLayout(btnClaves);
+        btnClaves.setLayout(btnClavesLayout);
+        btnClavesLayout.setHorizontalGroup(
+            btnClavesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnClavesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel8)
                 .addContainerGap(11, Short.MAX_VALUE))
         );
-        btn_1Layout.setVerticalGroup(
-            btn_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btn_1Layout.createSequentialGroup()
+        btnClavesLayout.setVerticalGroup(
+            btnClavesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnClavesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
         );
 
-        side_pane.add(btn_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 120, -1));
+        side_pane.add(btnClaves, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 120, -1));
 
-        btn_2.setBackground(new java.awt.Color(23, 35, 51));
-        btn_2.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnGestor.setBackground(new java.awt.Color(23, 35, 51));
+        btnGestor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                btn_2MousePressed(evt);
+                btnGestorMousePressed(evt);
             }
         });
 
@@ -114,24 +114,24 @@ public class frmPrincipal_administrador extends javax.swing.JFrame implements Ke
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Gestor de Docentes");
 
-        javax.swing.GroupLayout btn_2Layout = new javax.swing.GroupLayout(btn_2);
-        btn_2.setLayout(btn_2Layout);
-        btn_2Layout.setHorizontalGroup(
-            btn_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btn_2Layout.createSequentialGroup()
+        javax.swing.GroupLayout btnGestorLayout = new javax.swing.GroupLayout(btnGestor);
+        btnGestor.setLayout(btnGestorLayout);
+        btnGestorLayout.setHorizontalGroup(
+            btnGestorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnGestorLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel10)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        btn_2Layout.setVerticalGroup(
-            btn_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btn_2Layout.createSequentialGroup()
+        btnGestorLayout.setVerticalGroup(
+            btnGestorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnGestorLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        side_pane.add(btn_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 120, -1));
+        side_pane.add(btnGestor, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 120, -1));
 
         jSeparator1.setPreferredSize(new java.awt.Dimension(50, 2));
         side_pane.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 100, -1));
@@ -141,10 +141,10 @@ public class frmPrincipal_administrador extends javax.swing.JFrame implements Ke
         jLabel14.setText("MSV");
         side_pane.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
-        btn_8.setBackground(new java.awt.Color(23, 35, 51));
-        btn_8.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnCerrar.setBackground(new java.awt.Color(23, 35, 51));
+        btnCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btn_8MouseReleased(evt);
+                btnCerrarMouseReleased(evt);
             }
         });
 
@@ -152,24 +152,24 @@ public class frmPrincipal_administrador extends javax.swing.JFrame implements Ke
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Cerrar sesión");
 
-        javax.swing.GroupLayout btn_8Layout = new javax.swing.GroupLayout(btn_8);
-        btn_8.setLayout(btn_8Layout);
-        btn_8Layout.setHorizontalGroup(
-            btn_8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btn_8Layout.createSequentialGroup()
+        javax.swing.GroupLayout btnCerrarLayout = new javax.swing.GroupLayout(btnCerrar);
+        btnCerrar.setLayout(btnCerrarLayout);
+        btnCerrarLayout.setHorizontalGroup(
+            btnCerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnCerrarLayout.createSequentialGroup()
                 .addContainerGap(28, Short.MAX_VALUE)
                 .addComponent(jLabel12)
                 .addGap(24, 24, 24))
         );
-        btn_8Layout.setVerticalGroup(
-            btn_8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btn_8Layout.createSequentialGroup()
+        btnCerrarLayout.setVerticalGroup(
+            btnCerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnCerrarLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        side_pane.add(btn_8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 120, -1));
+        side_pane.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 120, -1));
 
         jPanel4.add(side_pane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 620));
 
@@ -236,14 +236,14 @@ public class frmPrincipal_administrador extends javax.swing.JFrame implements Ke
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_1MousePressed
+    private void btnClavesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClavesMousePressed
 
-        setColor(btn_1);
-        resetColor(new JPanel[]{btn_8});
+        setColor(btnClaves);
+        resetColor(new JPanel[]{btnCerrar});
         lbl_nav.setText("Inicio");
         lbl_nav2.setText("Administrar Clave");
         new CambiaPanel(pnl_host, new vistas.administrador.frmAdministar_Claves());
-    }//GEN-LAST:event_btn_1MousePressed
+    }//GEN-LAST:event_btnClavesMousePressed
 
     private void lblminimizarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblminimizarMousePressed
 
@@ -262,22 +262,22 @@ public class frmPrincipal_administrador extends javax.swing.JFrame implements Ke
 
     }//GEN-LAST:event_jPanel4KeyPressed
 
-    private void btn_8MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_8MouseReleased
-        setColor(btn_8);
-        resetColor(new JPanel[]{btn_1});
-        FormRegistro login = new FormRegistro();
+    private void btnCerrarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarMouseReleased
+        setColor(btnCerrar);
+        resetColor(new JPanel[]{btnClaves});
+        vistas.FormLogin login = new vistas.FormLogin();
         login.setVisible(true);
         dispose();
-    }//GEN-LAST:event_btn_8MouseReleased
+    }//GEN-LAST:event_btnCerrarMouseReleased
 
-    private void btn_2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_2MousePressed
+    private void btnGestorMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGestorMousePressed
 
-        setColor(btn_2);
-        resetColor(new JPanel[]{btn_1, btn_3, btn_4, btn_5, btn_6, btn_7, btn_8});
+        setColor(btnGestor);
+        resetColor(new JPanel[]{btnClaves,btnCerrar});
         lbl_nav2.setText("Gestor Docente");
 
         new CambiaPanel(pnl_host, new vistas.frmGestorDocente());
-    }//GEN-LAST:event_btn_2MousePressed
+    }//GEN-LAST:event_btnGestorMousePressed
 
     public static void setColor(JPanel pane) {
         pane.setBackground(new Color(41, 57, 80));
@@ -303,9 +303,9 @@ public class frmPrincipal_administrador extends javax.swing.JFrame implements Ke
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JPanel btn_1;
-    public static javax.swing.JPanel btn_2;
-    public static javax.swing.JPanel btn_8;
+    public static javax.swing.JPanel btnCerrar;
+    public static javax.swing.JPanel btnClaves;
+    public static javax.swing.JPanel btnGestor;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;

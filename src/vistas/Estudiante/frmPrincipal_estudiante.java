@@ -22,11 +22,11 @@ public class frmPrincipal_estudiante extends javax.swing.JFrame implements KeyLi
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
-        setColor(btn_1);
-        resetColor(new JPanel[]{btn_2,btn_3,btn_4,btn_6,btn_7, btn_8});
+        setColor(btnBiblioteca);
+        resetColor(new JPanel[]{btnCerrar});
 
         //ArrayList{
-        new CambiaPanel(pnl_host, new vistas.frmUsuarios());
+        new CambiaPanel(pnl_host, new vistas.Estudiante.frmBiblioteca_Estudiante());
         lbl_nav.setText("Bienvenido");
 
         lbl_nav2.setText("Estudiante");
@@ -42,11 +42,11 @@ public class frmPrincipal_estudiante extends javax.swing.JFrame implements KeyLi
 
         jPanel4 = new javax.swing.JPanel();
         side_pane = new javax.swing.JPanel();
-        btn_1 = new javax.swing.JPanel();
+        btnBiblioteca = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel14 = new javax.swing.JLabel();
-        btn_8 = new javax.swing.JPanel();
+        btnCerrar = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         pnl_overlay = new javax.swing.JPanel();
         lbl_nav2 = new javax.swing.JLabel();
@@ -71,10 +71,10 @@ public class frmPrincipal_estudiante extends javax.swing.JFrame implements KeyLi
         side_pane.setBackground(new java.awt.Color(0, 0, 0));
         side_pane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn_1.setBackground(new java.awt.Color(23, 35, 51));
-        btn_1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnBiblioteca.setBackground(new java.awt.Color(23, 35, 51));
+        btnBiblioteca.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                btn_1MousePressed(evt);
+                btnBibliotecaMousePressed(evt);
             }
         });
 
@@ -82,24 +82,24 @@ public class frmPrincipal_estudiante extends javax.swing.JFrame implements KeyLi
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Biblioteca");
 
-        javax.swing.GroupLayout btn_1Layout = new javax.swing.GroupLayout(btn_1);
-        btn_1.setLayout(btn_1Layout);
-        btn_1Layout.setHorizontalGroup(
-            btn_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btn_1Layout.createSequentialGroup()
+        javax.swing.GroupLayout btnBibliotecaLayout = new javax.swing.GroupLayout(btnBiblioteca);
+        btnBiblioteca.setLayout(btnBibliotecaLayout);
+        btnBibliotecaLayout.setHorizontalGroup(
+            btnBibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnBibliotecaLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jLabel8)
                 .addContainerGap(44, Short.MAX_VALUE))
         );
-        btn_1Layout.setVerticalGroup(
-            btn_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btn_1Layout.createSequentialGroup()
+        btnBibliotecaLayout.setVerticalGroup(
+            btnBibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnBibliotecaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        side_pane.add(btn_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 120, -1));
+        side_pane.add(btnBiblioteca, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 120, -1));
 
         jSeparator1.setPreferredSize(new java.awt.Dimension(50, 2));
         side_pane.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 100, -1));
@@ -109,10 +109,10 @@ public class frmPrincipal_estudiante extends javax.swing.JFrame implements KeyLi
         jLabel14.setText("MSV");
         side_pane.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
-        btn_8.setBackground(new java.awt.Color(23, 35, 51));
-        btn_8.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnCerrar.setBackground(new java.awt.Color(23, 35, 51));
+        btnCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btn_8MouseReleased(evt);
+                btnCerrarMouseReleased(evt);
             }
         });
 
@@ -120,24 +120,24 @@ public class frmPrincipal_estudiante extends javax.swing.JFrame implements KeyLi
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Cerrar sesión");
 
-        javax.swing.GroupLayout btn_8Layout = new javax.swing.GroupLayout(btn_8);
-        btn_8.setLayout(btn_8Layout);
-        btn_8Layout.setHorizontalGroup(
-            btn_8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btn_8Layout.createSequentialGroup()
+        javax.swing.GroupLayout btnCerrarLayout = new javax.swing.GroupLayout(btnCerrar);
+        btnCerrar.setLayout(btnCerrarLayout);
+        btnCerrarLayout.setHorizontalGroup(
+            btnCerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnCerrarLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jLabel12)
                 .addContainerGap(28, Short.MAX_VALUE))
         );
-        btn_8Layout.setVerticalGroup(
-            btn_8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btn_8Layout.createSequentialGroup()
+        btnCerrarLayout.setVerticalGroup(
+            btnCerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnCerrarLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        side_pane.add(btn_8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 120, -1));
+        side_pane.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 120, -1));
 
         jPanel4.add(side_pane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 620));
 
@@ -204,14 +204,14 @@ public class frmPrincipal_estudiante extends javax.swing.JFrame implements KeyLi
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_1MousePressed
+    private void btnBibliotecaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBibliotecaMousePressed
 
-        setColor(btn_1);
-        resetColor(new JPanel[]{btn_2,btn_3,btn_4,btn_6,btn_7,btn_8});
+        setColor(btnBiblioteca);
+        resetColor(new JPanel[]{btnCerrar});
         
         lbl_nav2.setText("Biblioteca");
         new CambiaPanel(pnl_host, new vistas.Estudiante.frmBiblioteca_Estudiante());
-    }//GEN-LAST:event_btn_1MousePressed
+    }//GEN-LAST:event_btnBibliotecaMousePressed
 
     private void lblminimizarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblminimizarMousePressed
 
@@ -230,13 +230,13 @@ public class frmPrincipal_estudiante extends javax.swing.JFrame implements KeyLi
 
     }//GEN-LAST:event_jPanel4KeyPressed
 
-    private void btn_8MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_8MouseReleased
-        setColor(btn_8);
-        resetColor(new JPanel[]{btn_1});
-        FormRegistro login = new FormRegistro();
+    private void btnCerrarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarMouseReleased
+        setColor(btnCerrar);
+        resetColor(new JPanel[]{btnBiblioteca});
+        vistas.FormLogin login = new vistas.FormLogin();
         login.setVisible(true);
         dispose();
-    }//GEN-LAST:event_btn_8MouseReleased
+    }//GEN-LAST:event_btnCerrarMouseReleased
 
     public static void setColor(JPanel pane) {
         pane.setBackground(new Color(41, 57, 80));
@@ -262,8 +262,8 @@ public class frmPrincipal_estudiante extends javax.swing.JFrame implements KeyLi
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JPanel btn_1;
-    private javax.swing.JPanel btn_8;
+    public static javax.swing.JPanel btnBiblioteca;
+    public static javax.swing.JPanel btnCerrar;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel8;

@@ -7,12 +7,12 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
-public class frmUsuarios_organizador extends javax.swing.JPanel {
+public class frmUsuarios_SubirLibros extends javax.swing.JPanel {
 
    
     DefaultTableModel modelo = new DefaultTableModel();
 
-    public frmUsuarios_organizador() {
+    public frmUsuarios_SubirLibros() {
         initComponents();
         //modelo = (DefaultTableModel) tbl_Organizador.getModel();
       
