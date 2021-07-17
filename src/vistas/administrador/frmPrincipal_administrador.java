@@ -156,10 +156,10 @@ public class frmPrincipal_administrador extends javax.swing.JFrame implements Ke
         btnCerrar.setLayout(btnCerrarLayout);
         btnCerrarLayout.setHorizontalGroup(
             btnCerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnCerrarLayout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
+            .addGroup(btnCerrarLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel12)
-                .addGap(24, 24, 24))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         btnCerrarLayout.setVerticalGroup(
             btnCerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
