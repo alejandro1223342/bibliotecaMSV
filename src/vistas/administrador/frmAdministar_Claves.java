@@ -7,16 +7,19 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import modelo.controllers.AdministrarClavesController;
+import modelo.controllers.LoginController;
+import modelo.managers.AdministrarClavesManager;
 
 
 public class frmAdministar_Claves extends javax.swing.JPanel {
-
-   
+    //Declarar
+   AdministrarClavesController ACCController;
     
     public frmAdministar_Claves() {
+        //Inicializar
         initComponents();
-        
-        
+        ACCController = new AdministrarClavesController();
     }
 
     @SuppressWarnings("unchecked")
@@ -66,6 +69,11 @@ public class frmAdministar_Claves extends javax.swing.JPanel {
         jLabel4.setText("Cambiar Clave:");
 
         txtClaveA.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtClaveA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtClaveAActionPerformed(evt);
+            }
+        });
 
         txtCambioClaveA.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtCambioClaveA.addActionListener(new java.awt.event.ActionListener() {
@@ -89,9 +97,19 @@ public class frmAdministar_Claves extends javax.swing.JPanel {
 
         btnCambiar.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         btnCambiar.setText("Cambiar");
+        btnCambiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCambiarActionPerformed(evt);
+            }
+        });
 
         btnCambiarD.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         btnCambiarD.setText("Cambiar");
+        btnCambiarD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCambiarDActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -111,7 +129,7 @@ public class frmAdministar_Claves extends javax.swing.JPanel {
                             .addComponent(jLabel4)
                             .addGap(18, 18, 18)
                             .addComponent(txtCambioClaveA, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                            .addGap(31, 31, 31)
                             .addComponent(btnCambiar))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                             .addGap(2, 2, 2)
@@ -125,7 +143,7 @@ public class frmAdministar_Claves extends javax.swing.JPanel {
                                     .addGap(29, 29, 29)
                                     .addComponent(txtClaveADocente)))
                             .addGap(39, 39, 39)
-                            .addComponent(btnCambiarD, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btnCambiarD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(0, 353, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -177,8 +195,32 @@ public class frmAdministar_Claves extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtCambioClaveAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCambioClaveAActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_txtCambioClaveAActionPerformed
+
+    private void txtClaveAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClaveAActionPerformed
+        
+    }//GEN-LAST:event_txtClaveAActionPerformed
+
+    private void btnCambiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambiarActionPerformed
+        
+        String CLAVEA = txtClaveA.getText();
+        String CLAVEN = txtCambioClaveA.getText();
+        
+        
+        ACCController.actionAdmiClaves(2,CLAVEA,CLAVEN);
+        
+    }//GEN-LAST:event_btnCambiarActionPerformed
+
+    private void btnCambiarDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambiarDActionPerformed
+        // TODO add your handling code here:
+      
+        String CLAVEA = txtClaveADocente.getText();
+        String CLAVEN = txtCambioClaveD.getText();
+     
+        ACCController.actionAdmiClaves(1,CLAVEA,CLAVEN);
+        
+    }//GEN-LAST:event_btnCambiarDActionPerformed
 
     
 
