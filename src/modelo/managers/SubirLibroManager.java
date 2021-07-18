@@ -18,7 +18,7 @@ public class SubirLibroManager {
 
     public ArrayList<CategoriasModel> finAllCategorias() {
         ArrayList<CategoriasModel> listaCategoria = new ArrayList<CategoriasModel>();
-        String sql = "select * from CATEGORIAS_LIBRO";
+        String sql = "select * from CATEGORIAS";
         try {
             acceso = con.conectar();
             ps = acceso.prepareStatement(sql);
@@ -38,7 +38,7 @@ public class SubirLibroManager {
 
     public ArrayList<MateriasModel> finAllMaterias() {
         ArrayList<MateriasModel> listaMateria = new ArrayList<MateriasModel>();
-        String sql = "select * from MATERIAS_LIBRO";
+        String sql = "select * from MATERIAS";
         try {
             acceso = con.conectar();
             ps = acceso.prepareStatement(sql);
