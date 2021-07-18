@@ -10,34 +10,41 @@ import modelo.controllers.SubirLibroController;
 import modelos.entidades.CategoriasModel;
 import modelos.entidades.MateriasModel;
 
-
 public class frmUsuarios_SubirLibros extends javax.swing.JPanel {
 
-  private SubirLibroController sbc; 
-  private TextAutoCompleter autoCompletarCategoria, autoCompletarMateria;
+    private SubirLibroController sbc;
+    private TextAutoCompleter autoCompletarCategoria, autoCompletarMateria;
+    
+    // se declaran los modelos de las tablas categorias y materias
+    DefaultTableModel modeloCategoria;
+    DefaultTableModel modeloMaterias;
+
+    // SE INICIALIZAN LAS LISTAS DE LAS CATEGORIAS Y MATERIAS
+    ArrayList<CategoriasModel> listaCategorias = new ArrayList<CategoriasModel>();
+    ArrayList<MateriasModel> listaMaterias = new ArrayList<MateriasModel>();
+    
+    
 
     public frmUsuarios_SubirLibros() {
         initComponents();
+        //inicializar el modelo de la tabla
+        modeloCategoria = (DefaultTableModel) tblcategorias.getModel();
+        modeloMaterias = (DefaultTableModel) tblmaterias.getModel();
         // se inicializa el controller
         sbc = new SubirLibroController();
-        
-        // se carga lista con las categorias y materias
-        ArrayList<CategoriasModel> listaCategorias = sbc.actionFindAllCategorias();
-        ArrayList<MateriasModel> listaMaterias = sbc.actionFindAllMaterias();
-       
-        
+
         //se inicializa el AUTOCOMPLETAR EN LOS INPUTS txtcategoria y txtmateria
         autoCompletarCategoria = new TextAutoCompleter(txtcategoria);
         autoCompletarMateria = new TextAutoCompleter(txtmateria);
         
+        // se carga lista con las categorias y materias
+        listaCategorias = sbc.actionFindAllCategorias();
+        listaMaterias = sbc.actionFindAllMaterias();
+        
         //se carga la predicción de los autocompletadores con las listas categorias y materias
-        sbc.llenarPrediccion(autoCompletarCategoria, autoCompletarMateria, listaCategorias, listaMaterias);
-        
-        
-        
-    }
+        sbc.actionllenarPrediccion(autoCompletarCategoria, autoCompletarMateria, listaCategorias, listaMaterias);
 
-    
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -347,16 +354,20 @@ public class frmUsuarios_SubirLibros extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubirLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubirLibroActionPerformed
-     
-        
+
+
     }//GEN-LAST:event_btnSubirLibroActionPerformed
 
     private void btnmateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmateriasActionPerformed
-        // TODO add your handling code here:
+       String nombreMateria = txtmateria.getText();
+        sbc.actionAgregarMateria(listaMaterias, nombreMateria, modeloMaterias);
+        txtmateria.setText("");
     }//GEN-LAST:event_btnmateriasActionPerformed
 
     private void btncategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncategoriaActionPerformed
-
+        String nombreCategoria = txtcategoria.getText();
+        sbc.actionAgregarCategoria(listaCategorias, nombreCategoria, modeloCategoria);
+        txtcategoria.setText("");
     }//GEN-LAST:event_btncategoriaActionPerformed
 
     private void txtDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescripcionActionPerformed
@@ -376,16 +387,15 @@ public class frmUsuarios_SubirLibros extends javax.swing.JPanel {
     }//GEN-LAST:event_txtmateriaActionPerformed
 
     private void btnborrarcatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnborrarcatActionPerformed
-        // TODO add your handling code here:
+        sbc.limpiarTabla(modeloCategoria);
+        txtcategoria.setText("");
     }//GEN-LAST:event_btnborrarcatActionPerformed
 
     private void btnborrarmatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnborrarmatActionPerformed
-        // TODO add your handling code here:
+        sbc.limpiarTabla(modeloMaterias);
+        txtmateria.setText("");
     }//GEN-LAST:event_btnborrarmatActionPerformed
 
-   
-
-  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSubirLibro;
