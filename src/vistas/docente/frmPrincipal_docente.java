@@ -402,7 +402,7 @@ public class frmPrincipal_docente extends javax.swing.JFrame implements KeyListe
         lbl_nav.setText("Inicio");
         lbl_nav2.setText("Biblioteca");
 
-         new CambiaPanel(pnl_host, new vistas.docente.frmBiblioteca());
+         new CambiaPanel(pnl_host, new vistas.biblioteca.frmBiblioteca());
     }//GEN-LAST:event_btnBibliotecaMousePressed
 
     public static void setColor(JPanel pane) {

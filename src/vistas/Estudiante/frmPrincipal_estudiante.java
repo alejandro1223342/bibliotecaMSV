@@ -26,7 +26,7 @@ public class frmPrincipal_estudiante extends javax.swing.JFrame implements KeyLi
         resetColor(new JPanel[]{btnCerrar});
 
         //ArrayList{
-        new CambiaPanel(pnl_host, new vistas.Estudiante.frmBiblioteca_Estudiante());
+        new CambiaPanel(pnl_host, new vistas.biblioteca.frmBiblioteca());
         lbl_nav.setText("Bienvenido");
 
         lbl_nav2.setText("Estudiante");
@@ -210,7 +210,7 @@ public class frmPrincipal_estudiante extends javax.swing.JFrame implements KeyLi
         resetColor(new JPanel[]{btnCerrar});
         
         lbl_nav2.setText("Biblioteca");
-        new CambiaPanel(pnl_host, new vistas.Estudiante.frmBiblioteca_Estudiante());
+        new CambiaPanel(pnl_host, new vistas.biblioteca.frmBiblioteca());
     }//GEN-LAST:event_btnBibliotecaMousePressed
 
     private void lblminimizarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblminimizarMousePressed
