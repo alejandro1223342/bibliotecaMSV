@@ -23,7 +23,7 @@ public class Crear_CategoriaManager {
     public int CrearCategoria (String NOMBRE_UNIQUE){
         int rowsAffect=0;
         try {
-            String sql="insert into CATEGORIAS_LIBRO (NOMBRE_UNIQUE) values (?)";
+            String sql="insert into CATEGORIAS (NOMBRE_UNIQUE) values (?)";
             acceso=con.conectar();
             ps = acceso.prepareStatement(sql);
             ps.setObject(1, NOMBRE_UNIQUE);

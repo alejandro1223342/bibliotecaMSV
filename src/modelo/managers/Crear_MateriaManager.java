@@ -24,7 +24,7 @@ public class Crear_MateriaManager {
     public int CrearMateria(String NOMBRE_UNIQUE) {
         int rowsAffect = 0;
         try {
-            String sql = "insert into MATERIAS_LIBRO (NOMBRE_UNIQUE) values (?)";
+            String sql = "insert into MATERIAS (NOMBRE_UNIQUE) values (?)";
             acceso = con.conectar();
             ps = acceso.prepareStatement(sql);
             ps.setObject(1, NOMBRE_UNIQUE);

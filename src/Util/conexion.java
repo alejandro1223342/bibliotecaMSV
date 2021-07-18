@@ -7,7 +7,7 @@ public class conexion {
 
     Connection con;
 
-    String url = "jdbc:mysql://mysql-38431-0.cloudclusters.net:38431/biblioteca";
+    String url = "jdbc:mysql://mysql-38431-0.cloudclusters.net:38431/biblioteca2";
     String user = "admin";//root    
     String pass = "rO6DjTXY";//
 
