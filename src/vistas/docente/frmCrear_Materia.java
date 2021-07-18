@@ -8,16 +8,19 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import modelo.controllers.Crear_CategoriaController;
+import modelo.controllers.Crear_MateriaController;
 
 
 public class frmCrear_Materia extends javax.swing.JPanel {
 
+   Crear_MateriaController AdmiMateCont;
    
-    
+   
     public frmCrear_Materia() {
         initComponents();
         
-        
+        AdmiMateCont = new Crear_MateriaController(); 
     }
 
     @SuppressWarnings("unchecked")
@@ -59,6 +62,11 @@ public class frmCrear_Materia extends javax.swing.JPanel {
 
         btnGuardar.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -106,6 +114,13 @@ public class frmCrear_Materia extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        // TODO add your handling code here:
+        String CrearM = txtNombreMateria.getText();
+        AdmiMateCont.CrearMateria(CrearM);
+        txtNombreMateria.setText(""); 
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
     
 
