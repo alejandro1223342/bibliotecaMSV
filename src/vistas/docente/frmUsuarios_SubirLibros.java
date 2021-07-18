@@ -5,17 +5,36 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import com.mxrck.autocompleter.TextAutoCompleter;
+import modelo.controllers.SubirLibroController;
+import modelos.entidades.CategoriasModel;
+import modelos.entidades.MateriasModel;
 
 
 public class frmUsuarios_SubirLibros extends javax.swing.JPanel {
 
-   
-    DefaultTableModel modelo = new DefaultTableModel();
+  private SubirLibroController sbc; 
+  private TextAutoCompleter autoCompletarCategoria, autoCompletarMateria;
 
     public frmUsuarios_SubirLibros() {
         initComponents();
-        //modelo = (DefaultTableModel) tbl_Organizador.getModel();
-      
+        // se inicializa el controller
+        sbc = new SubirLibroController();
+        
+        // se carga lista con las categorias y materias
+        ArrayList<CategoriasModel> listaCategorias = sbc.actionFindAllCategorias();
+        ArrayList<MateriasModel> listaMaterias = sbc.actionFindAllMaterias();
+       
+        
+        //se inicializa el AUTOCOMPLETAR EN LOS INPUTS txtcategoria y txtmateria
+        autoCompletarCategoria = new TextAutoCompleter(txtcategoria);
+        autoCompletarMateria = new TextAutoCompleter(txtmateria);
+        
+        //se carga la predicción de los autocompletadores con las listas categorias y materias
+        sbc.llenarPrediccion(autoCompletarCategoria, autoCompletarMateria, listaCategorias, listaMaterias);
+        
+        
+        
     }
 
     
@@ -29,12 +48,6 @@ public class frmUsuarios_SubirLibros extends javax.swing.JPanel {
         lblActividad = new javax.swing.JLabel();
         lblColaborador = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtA_Categoria = new javax.swing.JTextArea();
-        cboCategoria = new javax.swing.JComboBox<>();
-        cboMaterias = new javax.swing.JComboBox<>();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        txtA_Materias = new javax.swing.JTextArea();
         btncategoria = new javax.swing.JButton();
         btnmaterias = new javax.swing.JButton();
         btnSubirLibro = new javax.swing.JButton();
@@ -47,6 +60,14 @@ public class frmUsuarios_SubirLibros extends javax.swing.JPanel {
         txtDescripcion = new javax.swing.JTextField();
         txtAutor = new javax.swing.JTextField();
         txtUrl = new javax.swing.JTextField();
+        txtcategoria = new javax.swing.JTextField();
+        txtmateria = new javax.swing.JTextField();
+        btnborrarcat = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblcategorias = new javax.swing.JTable();
+        btnborrarmat = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblmaterias = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -57,18 +78,6 @@ public class frmUsuarios_SubirLibros extends javax.swing.JPanel {
 
         lblColaborador.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         lblColaborador.setText("Materias:");
-
-        txtA_Categoria.setColumns(20);
-        txtA_Categoria.setRows(5);
-        jScrollPane1.setViewportView(txtA_Categoria);
-
-        cboCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        cboMaterias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        txtA_Materias.setColumns(20);
-        txtA_Materias.setRows(5);
-        jScrollPane3.setViewportView(txtA_Materias);
 
         btncategoria.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
         btncategoria.setText("OK");
@@ -114,6 +123,12 @@ public class frmUsuarios_SubirLibros extends javax.swing.JPanel {
             }
         });
 
+        txtUrl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUrlActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlDatosLibroLayout = new javax.swing.GroupLayout(pnlDatosLibro);
         pnlDatosLibro.setLayout(pnlDatosLibroLayout);
         pnlDatosLibroLayout.setHorizontalGroup(
@@ -127,7 +142,7 @@ public class frmUsuarios_SubirLibros extends javax.swing.JPanel {
                     .addComponent(jLabel4))
                 .addGap(27, 27, 27)
                 .addGroup(pnlDatosLibroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                    .addComponent(txtTitulo)
                     .addComponent(txtDescripcion)
                     .addComponent(txtAutor)
                     .addComponent(txtUrl))
@@ -148,77 +163,160 @@ public class frmUsuarios_SubirLibros extends javax.swing.JPanel {
                 .addGroup(pnlDatosLibroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(pnlDatosLibroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtUrl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addGroup(pnlDatosLibroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlDatosLibroLayout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(jLabel4)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnlDatosLibroLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(txtUrl, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
+
+        txtcategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtcategoriaActionPerformed(evt);
+            }
+        });
+
+        txtmateria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtmateriaActionPerformed(evt);
+            }
+        });
+
+        btnborrarcat.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnborrarcat.setText("Borrar categorias");
+        btnborrarcat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnborrarcatActionPerformed(evt);
+            }
+        });
+
+        tblcategorias.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "CATEGORÍA"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblcategorias);
+
+        btnborrarmat.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnborrarmat.setText("Borrar materias");
+        btnborrarmat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnborrarmatActionPerformed(evt);
+            }
+        });
+
+        tblmaterias.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "MATERIAS"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tblmaterias);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(312, 312, 312)
-                        .addComponent(btnSubirLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(btncategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(jPanel3Layout.createSequentialGroup()
-                                            .addComponent(lblColaborador)
-                                            .addGap(26, 26, 26)
-                                            .addComponent(cboMaterias, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(18, 18, 18)
-                                    .addComponent(btnmaterias, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(lblActividad)
-                                .addGap(37, 37, 37)
-                                .addComponent(cboCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(55, 55, 55)
-                        .addComponent(pnlDatosLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46)
-                        .addComponent(jLabel7)))
+                                .addGap(18, 18, 18)
+                                .addComponent(txtcategoria)
+                                .addGap(18, 18, 18)
+                                .addComponent(btncategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(17, 17, 17)
+                                .addComponent(btnborrarmat, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(lblColaborador)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtmateria))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnmaterias, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnborrarcat, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pnlDatosLibro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSubirLibro, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel7)
                 .addContainerGap(34, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                         .addComponent(pnlDatosLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnSubirLibro)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnSubirLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblActividad)
-                                    .addComponent(cboCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(15, 15, 15)
-                                .addComponent(jLabel7))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(btncategoria)
-                                .addGap(3, 3, 3)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(36, 36, 36)
+                                .addGap(30, 30, 30)
+                                .addComponent(btnborrarcat))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txtcategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblActividad))
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGap(127, 127, 127)
+                                        .addComponent(jLabel7))
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(37, 37, 37)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblColaborador)
-                            .addComponent(cboMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnmaterias))
-                        .addGap(34, 34, 34)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(213, 213, 213))))
+                            .addComponent(txtmateria, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnmaterias)
+                            .addComponent(lblColaborador))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnborrarmat)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(49, 49, 49)))
+                .addContainerGap(151, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -233,7 +331,7 @@ public class frmUsuarios_SubirLibros extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 11, Short.MAX_VALUE))
+                .addGap(0, 20, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -249,7 +347,7 @@ public class frmUsuarios_SubirLibros extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubirLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubirLibroActionPerformed
-        limpiarTabla();
+     
         
     }//GEN-LAST:event_btnSubirLibroActionPerformed
 
@@ -265,21 +363,36 @@ public class frmUsuarios_SubirLibros extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDescripcionActionPerformed
 
-    public void limpiarTabla() {
-        for (int i = 0; i < modelo.getRowCount(); i++) { //siempre va a eliminar la fila cero
-            modelo.removeRow(i);
-            i = i - 1;
-        }
-    }
+    private void txtUrlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUrlActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUrlActionPerformed
+
+    private void txtcategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcategoriaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtcategoriaActionPerformed
+
+    private void txtmateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtmateriaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtmateriaActionPerformed
+
+    private void btnborrarcatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnborrarcatActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnborrarcatActionPerformed
+
+    private void btnborrarmatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnborrarmatActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnborrarmatActionPerformed
+
+   
 
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSubirLibro;
+    private javax.swing.JButton btnborrarcat;
+    private javax.swing.JButton btnborrarmat;
     private javax.swing.JButton btncategoria;
     private javax.swing.JButton btnmaterias;
-    private javax.swing.JComboBox<String> cboCategoria;
-    private javax.swing.JComboBox<String> cboMaterias;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -288,15 +401,17 @@ public class frmUsuarios_SubirLibros extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblActividad;
     private javax.swing.JLabel lblColaborador;
     private javax.swing.JPanel pnlDatosLibro;
-    private javax.swing.JTextArea txtA_Categoria;
-    private javax.swing.JTextArea txtA_Materias;
+    private javax.swing.JTable tblcategorias;
+    private javax.swing.JTable tblmaterias;
     private javax.swing.JTextField txtAutor;
     private javax.swing.JTextField txtDescripcion;
     private javax.swing.JTextField txtTitulo;
     private javax.swing.JTextField txtUrl;
+    public static javax.swing.JTextField txtcategoria;
+    public static javax.swing.JTextField txtmateria;
     // End of variables declaration//GEN-END:variables
 }
