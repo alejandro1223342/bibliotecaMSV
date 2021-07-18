@@ -4,22 +4,22 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import modelo.controllers.GestorDocenteController;
 
 
 public class frmGestorDocente extends javax.swing.JPanel {
 
-   
-
     DefaultTableModel modelo = new DefaultTableModel();
+    GestorDocenteController gdc;
 
     public frmGestorDocente() {
         initComponents();
-       // modelo = (DefaultTableModel) tblclientes.getModel();
-        
+       modelo = (DefaultTableModel) tblDocentes.getModel();
+       gdc = new GestorDocenteController();
+       
+       
 
     }
-
-    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -29,16 +29,16 @@ public class frmGestorDocente extends javax.swing.JPanel {
         btnmodificar = new javax.swing.JButton();
         btnregistrar3 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblDocentes = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         btnclean = new javax.swing.JButton();
         btneliminar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        txtcedula = new javax.swing.JTextField();
+        txtnombre = new javax.swing.JTextField();
+        txtapellido = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -60,18 +60,28 @@ public class frmGestorDocente extends javax.swing.JPanel {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblDocentes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Cédula", "Nombres", "Apellidos"
             }
-        ));
-        jScrollPane2.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblDocentes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDocentesMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tblDocentes);
 
         btnclean.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
         btnclean.setText("Deshabilitar");
@@ -98,6 +108,12 @@ public class frmGestorDocente extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         jLabel3.setText("Apellidos");
 
+        txtcedula.setEditable(false);
+
+        txtnombre.setEditable(false);
+
+        txtapellido.setEditable(false);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -110,9 +126,9 @@ public class frmGestorDocente extends javax.swing.JPanel {
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(txtcedula, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
+                    .addComponent(txtapellido, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtnombre, javax.swing.GroupLayout.Alignment.LEADING))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(42, Short.MAX_VALUE)
@@ -127,15 +143,15 @@ public class frmGestorDocente extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtcedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtapellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addComponent(btneliminar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -190,43 +206,34 @@ public class frmGestorDocente extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btncleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncleanActionPerformed
-       // limpiarCampos();
+        String cedula = txtcedula.getText();
+        gdc.actionCambiarEstado(false, cedula);
+        gdc.actionFindAllDocentesEstado(true, modelo);
+        gdc.actionLimpiarImputs();
     }//GEN-LAST:event_btncleanActionPerformed
 
     private void btneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminarActionPerformed
-
+        String cedula = txtcedula.getText();
+        gdc.actionCambiarEstado(true, cedula);
+        gdc.actionFindAllDocentesEstado(false, modelo);
+        gdc.actionLimpiarImputs();
     }//GEN-LAST:event_btneliminarActionPerformed
 
     private void btnmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmodificarActionPerformed
-
+        gdc.actionFindAllDocentesEstado(false, modelo);
     }//GEN-LAST:event_btnmodificarActionPerformed
 
     private void btnregistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregistrarActionPerformed
-
+         gdc.actionFindAllDocentesEstado(true, modelo);
     }//GEN-LAST:event_btnregistrarActionPerformed
 
-    // METODOS CRUD
-   
+    private void tblDocentesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDocentesMouseClicked
+        int fila = tblDocentes.getSelectedRow();
+        gdc.actionDatosEnInputs(fila, modelo);
+    }//GEN-LAST:event_tblDocentesMouseClicked
 
-   
- 
-    //public void limpiarCampos() {
-        //txtcedula.setText("");
-       // txtnombre.setText("");
-        //txtapellido.setText("");
-        //txttelefono.setText("");
-        //txtdireccion.setText("");
-        //cmbestado.setSelectedItem("Seleccionar");
-        //txtcedula.requestFocus();
-    //}
 
-    //LIMPIAR TABLA
-    //public void limpiarTabla() {
-        //for (int i = 0; i < modelo.getRowCount(); i++) { //siempre va a eliminar la fila cero
-          //  modelo.removeRow(i);
-            //i = i - 1;
-      //  }
-    //}
+    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -240,9 +247,9 @@ public class frmGestorDocente extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTable tblDocentes;
+    public static javax.swing.JTextField txtapellido;
+    public static javax.swing.JTextField txtcedula;
+    public static javax.swing.JTextField txtnombre;
     // End of variables declaration//GEN-END:variables
 }
