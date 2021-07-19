@@ -13,12 +13,14 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import Util.CambiaPanel;
+import Util.UsuarioSession;
 
 
 public class frmPrincipal_docente extends javax.swing.JFrame implements KeyListener {
 
     //variables estaticas
     public frmPrincipal_docente() {
+        System.out.println("comprobar :"+UsuarioSession.getUsuario().getNombres());
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);

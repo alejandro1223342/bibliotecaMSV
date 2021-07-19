@@ -21,7 +21,7 @@ import modelos.entidades.PersonaModel;
 public class LoginController {
     LoginManager lm= new LoginManager();
     
-    public boolean actionLogin (String NOMBRE_ROL, String ID_CEDULA, String CLAVE){
+    public boolean actionLogin (String NOMBRE_ROL, String ID_CEDULA, String CLAVE) throws Exception{
         int id_rol = 0;
         if (NOMBRE_ROL.equals("Docente")) {
             id_rol = 1;
