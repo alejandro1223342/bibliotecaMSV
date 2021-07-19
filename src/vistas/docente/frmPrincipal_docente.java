@@ -419,16 +419,7 @@ public class frmPrincipal_docente extends javax.swing.JFrame implements KeyListe
 
     }
 
-    public static void main(String args[]) {
-
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new frmPrincipal_docente().setVisible(true);
-
-            }
-
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JPanel btnBiblioteca;

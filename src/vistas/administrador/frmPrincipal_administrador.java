@@ -290,16 +290,7 @@ public class frmPrincipal_administrador extends javax.swing.JFrame implements Ke
         }
     }
 
-    public static void main(String args[]) {
-
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new frmPrincipal_administrador().setVisible(true);
-
-            }
-
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JPanel btnCerrar;
