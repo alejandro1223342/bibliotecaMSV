@@ -233,6 +233,7 @@ public class FormLogin extends javax.swing.JFrame {
     private void btnIngresarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarBActionPerformed
         frmPrincipal_estudiante frmpe = new frmPrincipal_estudiante();
         frmpe.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnIngresarBActionPerformed
 
     private void btnRegistrarse1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarse1ActionPerformed

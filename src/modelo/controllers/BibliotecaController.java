@@ -28,13 +28,18 @@ public class BibliotecaController {
         }
 
     }
+    
+    public ArrayList<LibroModel> actionFindLibrosByCategoria(ArrayList<LibroModel> listaEncontrados, String parametro) {
+        listaEncontrados = bbm.findLibroByCategoria(parametro);
+        return listaEncontrados;
+    }
 
     public ArrayList<LibroModel> actionFindLibrosByIdOrTitle(ArrayList<LibroModel> listaEncontrados, String parametro) {
         listaEncontrados = bbm.findLibroByTituloOrID(parametro);
         return listaEncontrados;
     }
 
-    public void actionMostrarLibrosEncontradosByIdOrTitle(DefaultTableModel modelo,
+    public void actionMostrarLibrosEncontrados(DefaultTableModel modelo,
             ArrayList<LibroModel> listaEncontrados) {
         for (int i = 0; i < listaEncontrados.size(); i++) {
             Object[] ob = new Object[3];
@@ -105,12 +110,26 @@ public class BibliotecaController {
         }
 
     }
+    
+    
+  
+    
+    public void actionLlenarCmbCategorias(){
+        ArrayList<String> Lista = new ArrayList<>();
+         Lista = bbm.findAllCategorias();
+         frmBiblioteca.cmbCategorias.removeAllItems();
+         frmBiblioteca.cmbCategorias.addItem("Seleccionar");
+         for (String categoria : Lista) {
+            frmBiblioteca.cmbCategorias.addItem(categoria);
+        }
+    }
 
     public void EncerarInputs() {
         frmBiblioteca.txtsubidoPor.setText("");
         frmBiblioteca.txtautor.setText("");
         frmBiblioteca.txaDescripcion.setText("");
         frmBiblioteca.txaUrl.setText("");
+        frmBiblioteca.txtBuscador.setText("");
     }
 
     public void limpiarTabla(DefaultTableModel modelo) {

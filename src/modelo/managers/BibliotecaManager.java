@@ -95,6 +95,46 @@ public class BibliotecaManager {
         return listaLibro;
     }
 
+    public ArrayList<LibroModel> findLibroByCategoria(String categoria) {
+        ArrayList<LibroModel> listaLibro = new ArrayList<LibroModel>();
+        LibroModel libro;
+        try {
+
+            String sql = "select tl.*, concat(tp.NOMBRES,' ',tp.APELLIDOS) as SUBIDO_POR from LIBRO as tl "
+                    + "                    inner join HISTORIAL as th "
+                    + "                    on tl.ID_LIBRO = th.ID_LIBRO "
+                    + "                    inner join PERSONA as tp "
+                    + "                    on th.ID_CEDULA = tp.CEDULA "
+                    + "                    inner join LIBRO_CATEGORIAS as tlc "
+                    + "                    on tlc.ID_LIBRO = tl.ID_LIBRO "
+                    + "                    inner join CATEGORIAS tc "
+                    + "                    on tc.ID_CATEGORIAS_LIBRO= tlc.ID_CATEGORIAS_LIBRO "
+                    + "                    where tc.NOMBRE_UNIQUE = ?";
+
+            acceso = con.conectar();
+            ps = acceso.prepareStatement(sql);
+            ps.setObject(1, categoria);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                libro = new LibroModel();
+                libro.setId_libro(rs.getInt(1));
+                libro.setTitulo(rs.getString(2));
+                libro.setDescripcion(rs.getString(3));
+                libro.setAutor(rs.getString(4));
+                libro.setUrl(rs.getString(5));
+                libro.setEstado(rs.getBoolean(6));
+                libro.setSubidoPor(rs.getString(7));
+                listaLibro.add(libro);
+
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: BibliotecaManager: findLibroByCategoria" + e.getStackTrace());
+        }
+
+        return listaLibro;
+    }
+
     public ArrayList<String> FindLibroCategorias(int idLibro) {
         ArrayList<String> listaCategorias = new ArrayList<String>();
         try {
@@ -126,7 +166,7 @@ public class BibliotecaManager {
             ps = acceso.prepareStatement(sql);
             ps.setObject(1, idLibro);
             rs = ps.executeQuery();
-            
+
             while (rs.next()) {
                 listaMaterias.add(rs.getString(1));
             }
@@ -134,6 +174,26 @@ public class BibliotecaManager {
             JOptionPane.showMessageDialog(null, "Error: BibliotecaManager: FindLibroCategorias" + e.getStackTrace());
         }
         return listaMaterias;
+    }
+
+    public ArrayList<String> findAllCategorias() {
+        ArrayList<String> Lista = new ArrayList<>();
+
+        try {
+            String sql = "select NOMBRE_UNIQUE from CATEGORIAS";
+            acceso = con.conectar();
+            ps = acceso.prepareStatement(sql);
+
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Lista.add(rs.getString(1));
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: BibliotecaManager: findAllCategorias" + e.getStackTrace());
+        }
+
+        return Lista;
     }
 
 }

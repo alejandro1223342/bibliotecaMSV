@@ -17,7 +17,7 @@ import modelos.entidades.LibroModel;
 public class frmBiblioteca extends javax.swing.JPanel {
 
     BibliotecaController bbc;
-    
+
     private TextAutoCompleter autoCompletarBusqueda;
     private DefaultTableModel modeloBuscador;
     private DefaultTableModel modeloCategorias;
@@ -29,16 +29,19 @@ public class frmBiblioteca extends javax.swing.JPanel {
         modeloBuscador = (DefaultTableModel) tblBuscador.getModel();
         modeloCategorias = (DefaultTableModel) tblcategorias.getModel();
         modeloMaterias = (DefaultTableModel) tblmaterias.getModel();
-        
-        
+
+        //instancia del controller
         bbc = new BibliotecaController();
-        
+
+        //llenar combobox categorias
+        bbc.actionLlenarCmbCategorias();
+
         // se inicializa en el constructor para usarlo en el boton buscar y en el evento click table
         librosEncontrados = new ArrayList<LibroModel>();
-        
+
         // se incializa el autocompletador
         autoCompletarBusqueda = new TextAutoCompleter(txtBuscador);
-        
+
         //llenar predicción
         bbc.actionLlenarPrediccion(autoCompletarBusqueda);
     }
@@ -51,7 +54,7 @@ public class frmBiblioteca extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         txtBuscador = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        cboCategorias = new javax.swing.JComboBox<>();
+        cmbCategorias = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblBuscador = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
@@ -88,7 +91,12 @@ public class frmBiblioteca extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel1.setText("Buscar por Categoria:");
 
-        cboCategorias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Opción" }));
+        cmbCategorias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Opción" }));
+        cmbCategorias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbCategoriasActionPerformed(evt);
+            }
+        });
 
         tblBuscador.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -282,7 +290,7 @@ public class frmBiblioteca extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel1)
                             .addGap(18, 18, 18)
-                            .addComponent(cboCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(cmbCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addContainerGap(376, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
@@ -307,7 +315,7 @@ public class frmBiblioteca extends javax.swing.JPanel {
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel1)
-                        .addComponent(cboCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cmbCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addContainerGap(384, Short.MAX_VALUE)))
         );
 
@@ -343,24 +351,23 @@ public class frmBiblioteca extends javax.swing.JPanel {
     }//GEN-LAST:event_btnurlActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-       String buscar = txtBuscador.getText();
-       bbc.EncerarInputs();
-       librosEncontrados = bbc.actionFindLibrosByIdOrTitle(librosEncontrados, buscar);
-       bbc.limpiarTabla(modeloBuscador);
-       bbc.limpiarTabla(modeloCategorias);
-       bbc.limpiarTabla(modeloMaterias);
-       bbc.actionMostrarLibrosEncontradosByIdOrTitle(modeloBuscador, librosEncontrados);
-       
+        String buscar = txtBuscador.getText();
+        bbc.EncerarInputs();
+        librosEncontrados = bbc.actionFindLibrosByIdOrTitle(librosEncontrados, buscar);
+        bbc.limpiarTabla(modeloBuscador);
+        bbc.limpiarTabla(modeloCategorias);
+        bbc.limpiarTabla(modeloMaterias);
+        bbc.actionMostrarLibrosEncontrados(modeloBuscador, librosEncontrados);
+
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void txtBuscadorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscadorKeyPressed
-        
+
     }//GEN-LAST:event_txtBuscadorKeyPressed
 
     private void txtBuscadorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscadorKeyReleased
-        
-        
-        
+
+
     }//GEN-LAST:event_txtBuscadorKeyReleased
 
     private void tblBuscadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBuscadorMouseClicked
@@ -370,11 +377,25 @@ public class frmBiblioteca extends javax.swing.JPanel {
         bbc.actionMostrarMateriasLibro(modeloBuscador, modeloMaterias, fila);
     }//GEN-LAST:event_tblBuscadorMouseClicked
 
+    private void cmbCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCategoriasActionPerformed
+        if (cmbCategorias.getSelectedItem() != null) {
+            String categoria = cmbCategorias.getSelectedItem().toString();
+            System.out.println(categoria);
+            bbc.EncerarInputs();
+            librosEncontrados = bbc.actionFindLibrosByCategoria(librosEncontrados, categoria);
+            bbc.limpiarTabla(modeloBuscador);
+            bbc.limpiarTabla(modeloCategorias);
+            bbc.limpiarTabla(modeloMaterias);
+            bbc.actionMostrarLibrosEncontrados(modeloBuscador, librosEncontrados);
+        }
+
+    }//GEN-LAST:event_cmbCategoriasActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnurl;
-    private javax.swing.JComboBox<String> cboCategorias;
+    public static javax.swing.JComboBox<String> cmbCategorias;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -393,7 +414,7 @@ public class frmBiblioteca extends javax.swing.JPanel {
     private javax.swing.JTable tblmaterias;
     public static javax.swing.JTextArea txaDescripcion;
     public static javax.swing.JTextArea txaUrl;
-    private javax.swing.JTextField txtBuscador;
+    public static javax.swing.JTextField txtBuscador;
     public static javax.swing.JTextField txtautor;
     public static javax.swing.JTextField txtsubidoPor;
     // End of variables declaration//GEN-END:variables
