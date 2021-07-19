@@ -14,7 +14,7 @@ public class frmUsuarios_SubirLibros extends javax.swing.JPanel {
 
     private SubirLibroController sbc;
     private TextAutoCompleter autoCompletarCategoria, autoCompletarMateria;
-    
+
     // se declaran los modelos de las tablas categorias y materias
     DefaultTableModel modeloCategoria;
     DefaultTableModel modeloMaterias;
@@ -22,8 +22,6 @@ public class frmUsuarios_SubirLibros extends javax.swing.JPanel {
     // SE INICIALIZAN LAS LISTAS DE LAS CATEGORIAS Y MATERIAS
     ArrayList<CategoriasModel> listaCategorias = new ArrayList<CategoriasModel>();
     ArrayList<MateriasModel> listaMaterias = new ArrayList<MateriasModel>();
-    
-    
 
     public frmUsuarios_SubirLibros() {
         initComponents();
@@ -36,11 +34,11 @@ public class frmUsuarios_SubirLibros extends javax.swing.JPanel {
         //se inicializa el AUTOCOMPLETAR EN LOS INPUTS txtcategoria y txtmateria
         autoCompletarCategoria = new TextAutoCompleter(txtcategoria);
         autoCompletarMateria = new TextAutoCompleter(txtmateria);
-        
+
         // se carga lista con las categorias y materias
         listaCategorias = sbc.actionFindAllCategorias();
         listaMaterias = sbc.actionFindAllMaterias();
-        
+
         //se carga la predicción de los autocompletadores con las listas categorias y materias
         sbc.actionllenarPrediccion(autoCompletarCategoria, autoCompletarMateria, listaCategorias, listaMaterias);
 
@@ -354,12 +352,13 @@ public class frmUsuarios_SubirLibros extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubirLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubirLibroActionPerformed
-
+        
+        
 
     }//GEN-LAST:event_btnSubirLibroActionPerformed
 
     private void btnmateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmateriasActionPerformed
-       String nombreMateria = txtmateria.getText();
+        String nombreMateria = txtmateria.getText();
         sbc.actionAgregarMateria(listaMaterias, nombreMateria, modeloMaterias);
         txtmateria.setText("");
     }//GEN-LAST:event_btnmateriasActionPerformed

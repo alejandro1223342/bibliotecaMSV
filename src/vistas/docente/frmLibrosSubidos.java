@@ -54,6 +54,11 @@ public class frmLibrosSubidos extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblLibrossubidos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblLibrossubidosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblLibrossubidos);
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -93,6 +98,12 @@ public class frmLibrosSubidos extends javax.swing.JPanel {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tblLibrossubidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblLibrossubidosMouseClicked
+        // TODO add your handling code here:
+        int fila = tblLibrossubidos.getSelectedRow();
+        lsm.actionDatosEnInputs(fila, modelo);
+    }//GEN-LAST:event_tblLibrossubidosMouseClicked
 
     // METODOS CRUD
    
