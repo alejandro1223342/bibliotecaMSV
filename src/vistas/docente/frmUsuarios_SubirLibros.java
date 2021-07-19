@@ -358,10 +358,7 @@ public class frmUsuarios_SubirLibros extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubirLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubirLibroActionPerformed
-<<<<<<< HEAD
-        
-        
-=======
+
         // llenar datos del libro
         LibroModel libro = new LibroModel();
         libro.setTitulo(txtTitulo.getText());
@@ -404,7 +401,7 @@ public class frmUsuarios_SubirLibros extends javax.swing.JPanel {
             
         } catch (Exception ex) {
         }
->>>>>>> 901622b3f2c5f9d97eb3b5311ccf4a240a01e7e4
+
 
     }//GEN-LAST:event_btnSubirLibroActionPerformed
 

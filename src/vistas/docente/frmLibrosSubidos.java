@@ -99,7 +99,7 @@ public class frmLibrosSubidos extends javax.swing.JPanel {
     private void tblLibrossubidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblLibrossubidosMouseClicked
         // TODO add your handling code here:
         int fila = tblLibrossubidos.getSelectedRow();
-        lsm.actionDatosEnInputs(fila, modelo);
+        //lsm.actionDatosEnInputs(fila, modelo);
     }//GEN-LAST:event_tblLibrossubidosMouseClicked
 
     // METODOS CRUD
