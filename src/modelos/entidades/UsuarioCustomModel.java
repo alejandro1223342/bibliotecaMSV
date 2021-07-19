@@ -1,4 +1,4 @@
-
+ 
 package modelos.entidades;
 
 public class UsuarioCustomModel{
