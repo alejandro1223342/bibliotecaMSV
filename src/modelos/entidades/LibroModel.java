@@ -9,6 +9,7 @@ public class LibroModel {
     private String autor;
     private String url;
     private boolean estado;
+    private String subidoPor;
 
     public int getId_libro() {
         return id_libro;
@@ -56,6 +57,14 @@ public class LibroModel {
 
     public void setEstado(boolean estado) {
         this.estado = estado;
+    }
+
+    public String getSubidoPor() {
+        return subidoPor;
+    }
+
+    public void setSubidoPor(String subidoPor) {
+        this.subidoPor = subidoPor;
     }
     
     
