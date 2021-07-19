@@ -1,13 +1,19 @@
 package vistas.docente;
 
+import Util.UsuarioSession;
 import vistas.*;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import com.mxrck.autocompleter.TextAutoCompleter;
+import java.util.StringTokenizer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelo.controllers.SubirLibroController;
 import modelos.entidades.CategoriasModel;
+import modelos.entidades.HistorialModel;
+import modelos.entidades.LibroModel;
 import modelos.entidades.MateriasModel;
 
 public class frmUsuarios_SubirLibros extends javax.swing.JPanel {
@@ -321,7 +327,7 @@ public class frmUsuarios_SubirLibros extends javax.swing.JPanel {
                             .addComponent(btnborrarmat)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(49, 49, 49)))
-                .addContainerGap(151, Short.MAX_VALUE))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -336,7 +342,7 @@ public class frmUsuarios_SubirLibros extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 20, Short.MAX_VALUE))
+                .addGap(0, 14, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -352,8 +358,53 @@ public class frmUsuarios_SubirLibros extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubirLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubirLibroActionPerformed
+<<<<<<< HEAD
         
         
+=======
+        // llenar datos del libro
+        LibroModel libro = new LibroModel();
+        libro.setTitulo(txtTitulo.getText());
+        libro.setDescripcion(txtDescripcion.getText());
+        libro.setAutor(txtAutor.getText());
+        libro.setEstado(true);
+        
+
+        
+        // Se utiliza esta clase para quitar los espacios en blancos // necesario centralizar y refactorizar
+        StringTokenizer stTexto = new StringTokenizer(txtUrl.getText());
+        String urlSinEspacios ="";
+        while (stTexto.hasMoreElements()) {
+            urlSinEspacios += stTexto.nextElement();
+        }
+        libro.setUrl(urlSinEspacios);
+        
+        //se sube el libro a la base de datos
+        sbc.actionSubirLibro(libro);
+         
+        try {
+            //se suben las categorias y materias en la base de datos
+            sbc.actionSubirLibroCategorias(modeloCategoria);
+            sbc.actionSubirLibroMaterias(modeloMaterias);
+            
+            // se sube el historial a la base de datos
+            //llenar datos del historial
+            HistorialModel historial = new HistorialModel();
+            historial.setId_cedula(UsuarioSession.getUsuario().getCedula());
+            historial.setId_rol(UsuarioSession.getUsuario().getId_rol());
+            historial.setId_libro(sbc.actionObtenerUltimoIdLibro());
+            
+            sbc.actionSubirHistorial(historial);
+            
+            sbc.encerarInputs();
+            sbc.limpiarTabla(modeloMaterias);
+            sbc.limpiarTabla(modeloCategoria);
+            JOptionPane.showMessageDialog(null, "Libro guardado exitosamente");
+            
+            
+        } catch (Exception ex) {
+        }
+>>>>>>> 901622b3f2c5f9d97eb3b5311ccf4a240a01e7e4
 
     }//GEN-LAST:event_btnSubirLibroActionPerformed
 
@@ -416,10 +467,10 @@ public class frmUsuarios_SubirLibros extends javax.swing.JPanel {
     private javax.swing.JPanel pnlDatosLibro;
     private javax.swing.JTable tblcategorias;
     private javax.swing.JTable tblmaterias;
-    private javax.swing.JTextField txtAutor;
-    private javax.swing.JTextField txtDescripcion;
-    private javax.swing.JTextField txtTitulo;
-    private javax.swing.JTextField txtUrl;
+    public static javax.swing.JTextField txtAutor;
+    public static javax.swing.JTextField txtDescripcion;
+    public static javax.swing.JTextField txtTitulo;
+    public static javax.swing.JTextField txtUrl;
     public static javax.swing.JTextField txtcategoria;
     public static javax.swing.JTextField txtmateria;
     // End of variables declaration//GEN-END:variables

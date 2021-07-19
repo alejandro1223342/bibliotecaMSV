@@ -6,6 +6,7 @@ public class UsuarioCustomModel{
   private String cedula;
   private String nombres;
   private String apellidos;
+  private int id_rol;
 
     public String getCedula() {
         return cedula;
@@ -30,6 +31,16 @@ public class UsuarioCustomModel{
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
     }
+
+    public int getId_rol() {
+        return id_rol;
+    }
+
+    public void setId_rol(int id_rol) {
+        this.id_rol = id_rol;
+    }
+
+   
     
     
     

@@ -37,10 +37,7 @@ public class frmLibrosSubidos extends javax.swing.JPanel {
 
         tblLibrossubidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "ID Libro", "Titulo del Libro"

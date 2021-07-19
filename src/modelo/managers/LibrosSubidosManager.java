@@ -28,10 +28,10 @@ public class LibrosSubidosManager {
 
         ArrayList<LibrosSubidosModel> ListaLibro = new ArrayList<LibrosSubidosModel>();
         try {
-            String sql = "select th.ID_LIBRO,tl.TITULO from HISTORIAL as th"
-                    + "inner join LIBRO as tl"
-                    + "on th.ID_LIBRO=tl.ID_LIBRO"
-                    + "where tu.ID_ROL= ?  and tp.ESTADO = ?";
+            String sql = "select th.ID_LIBRO,tl.TITULO from HISTORIAL as th "
+                    + "inner join LIBRO as tl "
+                    + "on th.ID_LIBRO=tl.ID_LIBRO "
+                    + "where  tl.ESTADO = ? and th.ID_CEDULA=?";
 
             acceso = con.conectar();
             ps = acceso.prepareStatement(sql);
@@ -51,6 +51,7 @@ public class LibrosSubidosManager {
         }
         return ListaLibro;
     }
+
     public void modificarEstado(boolean ID_ROL, boolean estado) {
         String sql = "update PERSONA set ID_ROL=? where ESTADO=?";
         try {
@@ -60,7 +61,7 @@ public class LibrosSubidosManager {
             ps.setObject(2, estado);
             ps.executeUpdate();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "LibrosSubidosManager - modificarEstado: "+e.getMessage());
+            JOptionPane.showMessageDialog(null, "LibrosSubidosManager - modificarEstado: " + e.getMessage());
         }
     }
 

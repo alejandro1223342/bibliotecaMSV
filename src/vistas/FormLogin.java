@@ -14,6 +14,7 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 import modelo.controllers.LoginController;
 import modelo.controllers.RegistroController;
+import modelos.entidades.UsuarioCustomModel;
 import vistas.Estudiante.frmPrincipal_estudiante;
 import vistas.administrador.frmPrincipal_administrador;
 import vistas.docente.frmPrincipal_docente;
@@ -240,21 +241,28 @@ public class FormLogin extends javax.swing.JFrame {
         String cbo = (String) cboUsuario.getSelectedItem();
         String claveD = txtClaveDoc.getText();
 
-        LoginController.actionLogin(cbo, cedula, claveD);
-        if (cbo.equals("Administrador")) {
-            if (LoginController.actionLogin(cbo, cedula, claveD)) {
-                frmPrincipal_administrador frmAdmin = new frmPrincipal_administrador();
-                frmAdmin.setVisible(true);
-                dispose();
-            }
+        try {
+            boolean ingreso = LoginController.actionLogin(cbo, cedula, claveD);
+            if (cbo.equals("Administrador")) {
+                if (ingreso) {
 
-        } else if (cbo.equals("Docente")) {
-            if (LoginController.actionLogin(cbo, cedula, claveD)) {
-                frmPrincipal_docente frmDocen = new frmPrincipal_docente();
-                frmDocen.setVisible(true);
-                dispose();
+                    frmPrincipal_administrador frmAdmin = new frmPrincipal_administrador();
+                    frmAdmin.setVisible(true);
+                    dispose();
+                }
+
+            } else if (cbo.equals("Docente")) {
+                if (ingreso) {
+
+                    frmPrincipal_docente frmDocen = new frmPrincipal_docente();
+                    frmDocen.setVisible(true);
+                    dispose();
+                }
             }
+        } catch (Exception e) {
         }
+
+
     }//GEN-LAST:event_btnRegistrarse1ActionPerformed
 
     /**

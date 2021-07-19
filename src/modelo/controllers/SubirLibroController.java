@@ -7,7 +7,10 @@ import javax.swing.table.DefaultTableModel;
 import jdk.nashorn.internal.runtime.regexp.joni.exception.ErrorMessages;
 import modelo.managers.SubirLibroManager;
 import modelos.entidades.CategoriasModel;
+import modelos.entidades.HistorialModel;
+import modelos.entidades.LibroModel;
 import modelos.entidades.MateriasModel;
+import vistas.docente.frmUsuarios_SubirLibros;
 
 public class SubirLibroController {
 
@@ -64,7 +67,7 @@ public class SubirLibroController {
         }
 
     }
-    
+
     public void actionAgregarMateria(ArrayList<MateriasModel> listaMateria,
             String selectMateria, DefaultTableModel modelo) {
         boolean bandera = false;
@@ -95,6 +98,32 @@ public class SubirLibroController {
 
     }
 
+    public void actionSubirLibro(LibroModel libro) {
+        slm.registrarLibro(libro);   
+    }
+
+    public void actionSubirLibroCategorias(DefaultTableModel modelo) throws Exception {
+        int id_libro= actionObtenerUltimoIdLibro();
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            slm.registrarLibroCategoria(id_libro, Integer.parseInt(modelo.getValueAt(i, 0).toString()));
+        }
+    }
+
+    public void actionSubirLibroMaterias(DefaultTableModel modelo) throws Exception {
+        int id_libro= actionObtenerUltimoIdLibro();
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            slm.registrarLibroMateria(id_libro, Integer.parseInt(modelo.getValueAt(i, 0).toString()));
+        }
+    }
+    
+    public void actionSubirHistorial(HistorialModel historial) throws Exception{
+        slm.agregarHistorial(historial);
+    }
+    
+    public int actionObtenerUltimoIdLibro() throws Exception{
+        return slm.obtenerUltimoIdLibro();
+    }
+
     public boolean validarRepetidos(String select, DefaultTableModel modelo) {
         for (int i = 0; i < modelo.getRowCount(); i++) {
             if (modelo.getValueAt(i, 1).toString().equals(select)) {
@@ -103,6 +132,17 @@ public class SubirLibroController {
         }
         return false;// si es false -> quiere decir que no se repite
     }
+
+    public void encerarInputs(){
+        frmUsuarios_SubirLibros.txtAutor.setText("");
+        frmUsuarios_SubirLibros.txtDescripcion.setText("");
+        frmUsuarios_SubirLibros.txtTitulo.setText("");
+        frmUsuarios_SubirLibros.txtUrl.setText("");
+        frmUsuarios_SubirLibros.txtcategoria.setText("");
+        frmUsuarios_SubirLibros.txtmateria.setText("");
+        
+    }
+    
     
     public void limpiarTabla(DefaultTableModel modelo) {
         for (int i = 0; i < modelo.getRowCount(); i++) { //siempre va a eliminar la fila cero
