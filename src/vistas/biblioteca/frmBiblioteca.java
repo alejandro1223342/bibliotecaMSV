@@ -20,11 +20,16 @@ public class frmBiblioteca extends javax.swing.JPanel {
     
     private TextAutoCompleter autoCompletarBusqueda;
     private DefaultTableModel modeloBuscador;
+    private DefaultTableModel modeloCategorias;
+    private DefaultTableModel modeloMaterias;
     ArrayList<LibroModel> librosEncontrados;
 
     public frmBiblioteca() {
         initComponents();
         modeloBuscador = (DefaultTableModel) tblBuscador.getModel();
+        modeloCategorias = (DefaultTableModel) tblcategorias.getModel();
+        modeloMaterias = (DefaultTableModel) tblmaterias.getModel();
+        
         
         bbc = new BibliotecaController();
         
@@ -63,9 +68,9 @@ public class frmBiblioteca extends javax.swing.JPanel {
         btnurl = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        tblBuscador1 = new javax.swing.JTable();
+        tblcategorias = new javax.swing.JTable();
         jScrollPane5 = new javax.swing.JScrollPane();
-        tblBuscador2 = new javax.swing.JTable();
+        tblmaterias = new javax.swing.JTable();
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel2.setText("Buscador:");
@@ -211,7 +216,7 @@ public class frmBiblioteca extends javax.swing.JPanel {
             }
         });
 
-        tblBuscador1.setModel(new javax.swing.table.DefaultTableModel(
+        tblcategorias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -227,9 +232,9 @@ public class frmBiblioteca extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane4.setViewportView(tblBuscador1);
+        jScrollPane4.setViewportView(tblcategorias);
 
-        tblBuscador2.setModel(new javax.swing.table.DefaultTableModel(
+        tblmaterias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -245,7 +250,7 @@ public class frmBiblioteca extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane5.setViewportView(tblBuscador2);
+        jScrollPane5.setViewportView(tblmaterias);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -342,6 +347,8 @@ public class frmBiblioteca extends javax.swing.JPanel {
        bbc.EncerarInputs();
        librosEncontrados = bbc.actionFindLibrosByIdOrTitle(librosEncontrados, buscar);
        bbc.limpiarTabla(modeloBuscador);
+       bbc.limpiarTabla(modeloCategorias);
+       bbc.limpiarTabla(modeloMaterias);
        bbc.actionMostrarLibrosEncontradosByIdOrTitle(modeloBuscador, librosEncontrados);
        
     }//GEN-LAST:event_btnBuscarActionPerformed
@@ -359,6 +366,8 @@ public class frmBiblioteca extends javax.swing.JPanel {
     private void tblBuscadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBuscadorMouseClicked
         int fila = tblBuscador.getSelectedRow();
         bbc.actionMostrarDatosLibro(modeloBuscador, librosEncontrados, fila);
+        bbc.actionMostrarCategoriasLibro(modeloBuscador, modeloCategorias, fila);
+        bbc.actionMostrarMateriasLibro(modeloBuscador, modeloMaterias, fila);
     }//GEN-LAST:event_tblBuscadorMouseClicked
 
 
@@ -380,8 +389,8 @@ public class frmBiblioteca extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTable tblBuscador;
-    private javax.swing.JTable tblBuscador1;
-    private javax.swing.JTable tblBuscador2;
+    private javax.swing.JTable tblcategorias;
+    private javax.swing.JTable tblmaterias;
     public static javax.swing.JTextArea txaDescripcion;
     public static javax.swing.JTextArea txaUrl;
     private javax.swing.JTextField txtBuscador;

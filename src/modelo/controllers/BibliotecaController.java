@@ -62,6 +62,50 @@ public class BibliotecaController {
         }
     }
 
+    public void actionMostrarCategoriasLibro(
+            DefaultTableModel modeloEncontrados,
+            DefaultTableModel modeloCategorias,
+            int fila) {
+        if (fila == -1) {
+        } else {
+            int idLibro = Integer.parseInt(modeloEncontrados.getValueAt(fila, 0).toString());
+            ArrayList<String> listaLibroCategorias = new ArrayList<String>();
+            //se limpia tabla categorias cada vez que se elije un nuevo registro
+            limpiarTabla(modeloCategorias);
+            listaLibroCategorias = bbm.FindLibroCategorias(idLibro);
+            
+            for (int i = 0; i < listaLibroCategorias.size(); i++) {
+                Object[] ob = new Object[1];
+                ob[0]= listaLibroCategorias.get(i);
+                modeloCategorias.addRow(ob);
+            }
+            
+        }
+
+    }
+    
+    public void actionMostrarMateriasLibro(
+            DefaultTableModel modeloEncontrados,
+            DefaultTableModel modeloMaterias,
+            int fila) {
+        if (fila == -1) {
+        } else {
+            int idLibro = Integer.parseInt(modeloEncontrados.getValueAt(fila, 0).toString());
+            ArrayList<String> listaLibroMaterias = new ArrayList<String>();
+            //se limpia tabla categorias cada vez que se elije un nuevo registro
+            limpiarTabla(modeloMaterias);
+            listaLibroMaterias = bbm.FindLibroMaterias(idLibro);
+            
+            for (int i = 0; i < listaLibroMaterias.size(); i++) {
+                Object[] ob = new Object[1];
+                ob[0]= listaLibroMaterias.get(i);
+                modeloMaterias.addRow(ob);
+            }
+            
+        }
+
+    }
+
     public void EncerarInputs() {
         frmBiblioteca.txtsubidoPor.setText("");
         frmBiblioteca.txtautor.setText("");

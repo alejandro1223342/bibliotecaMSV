@@ -69,7 +69,7 @@ public class BibliotecaManager {
                     + "inner join PERSONA as tp "
                     + "on th.ID_CEDULA = tp.CEDULA "
                     + "where tl.ID_LIBRO = ? or tl.TITULO= ? ";
-            
+
             acceso = con.conectar();
             ps = acceso.prepareStatement(sql);
             ps.setObject(1, parametro);
@@ -93,6 +93,47 @@ public class BibliotecaManager {
         }
 
         return listaLibro;
+    }
+
+    public ArrayList<String> FindLibroCategorias(int idLibro) {
+        ArrayList<String> listaCategorias = new ArrayList<String>();
+        try {
+            String sql = "select tc.NOMBRE_UNIQUE from LIBRO_CATEGORIAS as tlc "
+                    + "inner join CATEGORIAS as tc "
+                    + "on tlc.ID_CATEGORIAS_LIBRO = tc.ID_CATEGORIAS_LIBRO "
+                    + "where tlc.ID_LIBRO = ?";
+            acceso = con.conectar();
+            ps = acceso.prepareStatement(sql);
+            ps.setObject(1, idLibro);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                listaCategorias.add(rs.getString(1));
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: BibliotecaManager: FindLibroCategorias" + e.getStackTrace());
+        }
+        return listaCategorias;
+    }
+
+    public ArrayList<String> FindLibroMaterias(int idLibro) {
+        ArrayList<String> listaMaterias = new ArrayList<String>();
+        try {
+            String sql = "select tm.NOMBRE_UNIQUE from LIBRO_MATERIAS as tlm "
+                    + "inner join MATERIAS as tm "
+                    + "on tlm.ID_MATERIAS_LIBRO = tm.ID_MATERIAS_LIBRO "
+                    + "where tlm.ID_LIBRO = ?";
+            acceso = con.conectar();
+            ps = acceso.prepareStatement(sql);
+            ps.setObject(1, idLibro);
+            rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                listaMaterias.add(rs.getString(1));
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: BibliotecaManager: FindLibroCategorias" + e.getStackTrace());
+        }
+        return listaMaterias;
     }
 
 }
