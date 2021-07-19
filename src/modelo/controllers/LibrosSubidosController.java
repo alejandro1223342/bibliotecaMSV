@@ -11,24 +11,20 @@ import modelo.managers.LibrosSubidosManager;
 import modelos.entidades.LibrosSubidosModel;
 import modelos.entidades.UsuarioCustomModel;
 
-/**
- *
- * @author alejo
- */
+
 public class LibrosSubidosController {
 
     LibrosSubidosManager lsm = new LibrosSubidosManager();
 
-    public void ActionFindAllLibrosS(boolean estado, DefaultTableModel modelo) {
+    public ArrayList<LibrosSubidosModel> ActionFindAllLibrosSubidos(boolean estado, String cedula) {
 
         ArrayList<LibrosSubidosModel> ListaLibro = new ArrayList<LibrosSubidosModel>();
+        ListaLibro = lsm.FindAllLibrosSubidos(estado, cedula);
 
-        ListaLibro = lsm.FindAllLibros(estado);
-
-        ActionFindAllLibrosS(ListaLibro, modelo);
+        return ListaLibro;
     }
 
-    public void ActionFindAllLibrosS(ArrayList<LibrosSubidosModel> ListaLibro, DefaultTableModel modelo) {
+    public void ActionMostrarLibrosSubidos(ArrayList<LibrosSubidosModel> ListaLibro, DefaultTableModel modelo) {
         Object ob[] = new Object[2];
         for (int i = 0; i < ListaLibro.size(); i++) {
             ob[0] = ListaLibro.get(i).getIdlibro();
@@ -37,16 +33,5 @@ public class LibrosSubidosController {
         }
     }
 
-    public void actionCambiarEstado(boolean ID_ROL, boolean estado ) {
-        lsm.modificarEstado(ID_ROL, estado);
-    }
-    
-    public void actionDatosEnInputs(int fila, DefaultTableModel modelo) {
-        if (fila == -1) {
-        } else {
-            String idlibro = modelo.getValueAt(fila, 0).toString();
-            String titulolibro = modelo.getValueAt(fila, 1).toString();
-        }
-    }
 
 }

@@ -24,19 +24,18 @@ public class LibrosSubidosManager {
     conexion con = new conexion();
     Connection acceso;
 
-    public ArrayList<LibrosSubidosModel> FindAllLibros(boolean estado) {
+    public ArrayList<LibrosSubidosModel> FindAllLibrosSubidos(boolean estado,String cedula) {
 
         ArrayList<LibrosSubidosModel> ListaLibro = new ArrayList<LibrosSubidosModel>();
         try {
             String sql = "select th.ID_LIBRO,tl.TITULO from HISTORIAL as th "
                     + "inner join LIBRO as tl "
                     + "on th.ID_LIBRO=tl.ID_LIBRO "
-                    + "where  tl.ESTADO = ? and th.ID_CEDULA=?";
+                    + "where th.ID_CEDULA=?";
 
             acceso = con.conectar();
             ps = acceso.prepareStatement(sql);
-            ps.setInt(1, 1);
-            ps.setObject(2, estado);
+            ps.setObject(1, cedula);
             rs = ps.executeQuery();
             while (rs.next()) {
                 LibrosSubidosModel LibrosS = new LibrosSubidosModel();
@@ -46,23 +45,11 @@ public class LibrosSubidosManager {
             }
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "actionFindAllLibros: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "LibrosSubidosManager-FindAllLibrosSubidos: " + e.getMessage());
 
         }
         return ListaLibro;
     }
 
-    public void modificarEstado(boolean ID_ROL, boolean estado) {
-        String sql = "update PERSONA set ID_ROL=? where ESTADO=?";
-        try {
-            acceso = con.conectar();
-            ps = acceso.prepareStatement(sql);
-            ps.setObject(1, ID_ROL);
-            ps.setObject(2, estado);
-            ps.executeUpdate();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "LibrosSubidosManager - modificarEstado: " + e.getMessage());
-        }
-    }
 
 }

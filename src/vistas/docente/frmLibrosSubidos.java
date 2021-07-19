@@ -1,23 +1,37 @@
 package vistas.docente;
 
+import Util.UsuarioSession;
 import vistas.*;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import modelo.controllers.LibrosSubidosController;
+import modelos.entidades.LibrosSubidosModel;
 
 
 public class frmLibrosSubidos extends javax.swing.JPanel {
 
    
 
-    DefaultTableModel modelo = new DefaultTableModel();
+    DefaultTableModel modelo;
+    // se declara el controlador
+    LibrosSubidosController lsc;
+    // se declara la lista de libros subidos
+    ArrayList<LibrosSubidosModel> listaHistorial;
 
     public frmLibrosSubidos() {
-        initComponents();
-       // modelo = (DefaultTableModel) tblclientes.getModel();
-        
-
+       initComponents();
+       modelo = (DefaultTableModel) tblLibrossubidos.getModel();
+       
+       // instancias globales de la clase
+       lsc = new LibrosSubidosController();
+       listaHistorial = new ArrayList<LibrosSubidosModel>();
+       
+       //se busca los libros subidos
+       listaHistorial=lsc.ActionFindAllLibrosSubidos(true, UsuarioSession.getUsuario().getCedula());
+       //mostrar historial en la tabla
+       lsc.ActionMostrarLibrosSubidos(listaHistorial, modelo);
     }
 
     
@@ -97,34 +111,10 @@ public class frmLibrosSubidos extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblLibrossubidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblLibrossubidosMouseClicked
-        // TODO add your handling code here:
-        int fila = tblLibrossubidos.getSelectedRow();
-        //lsm.actionDatosEnInputs(fila, modelo);
+      
     }//GEN-LAST:event_tblLibrossubidosMouseClicked
 
-    // METODOS CRUD
-   
-
-   
  
-    //public void limpiarCampos() {
-        //txtcedula.setText("");
-       // txtnombre.setText("");
-        //txtapellido.setText("");
-        //txttelefono.setText("");
-        //txtdireccion.setText("");
-        //cmbestado.setSelectedItem("Seleccionar");
-        //txtcedula.requestFocus();
-    //}
-
-    //LIMPIAR TABLA
-    //public void limpiarTabla() {
-        //for (int i = 0; i < modelo.getRowCount(); i++) { //siempre va a eliminar la fila cero
-          //  modelo.removeRow(i);
-            //i = i - 1;
-      //  }
-    //}
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel4;
